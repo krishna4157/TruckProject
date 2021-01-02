@@ -7,6 +7,7 @@ import { FadeInView } from '../utils/FadeInView';
 import MapView from 'react-native-maps'
 import { Permissions } from 'react-native-unimodules';
 import * as Location from 'expo-location';
+import { Marker } from 'react-native-maps';
 
 
 
@@ -51,15 +52,17 @@ class MapViewScreen extends React.Component {
         return (
         <View style={{flex:1,marginTop:30}}>
             <MapView
+                    showsUserLocation={true}
                     showsMyLocationButton={true}
                     style={{ alignSelf: 'stretch', flex:1 }}
                     region={this.state.mapRegion}
                     onRegionChange={this._handleMapRegionChange}
             >
-            <MapView.Marker
+            <Marker
+      key={'1'}
       coordinate={this.state.location.coords}
-      title="My Marker"
-      description="Some description"
+      title={'title'}
+      description={'marker.description'}
     />
     </MapView>
         </View>
