@@ -48,6 +48,11 @@ class EnterMobileNumber extends React.Component {
         }
       };
 
+      checkValues = () => {
+        const  {navigation} = this.props;
+        navigation.navigate('MapView');
+      }
+
 
 
 

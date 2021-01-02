@@ -15954,6 +15954,11 @@ react-native-localization@^2.1.6:
   dependencies:
     react-localization "^1.0.14"
 
+react-native-maps@^0.27.1:
+  version "0.27.1"
+  resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.27.1.tgz#2f10cd417bb2fd938c9e015b1c9b6d9b1a44b97f"
+  integrity sha512-HygBkZBecTnIVRYrSiLRAvu4OmXOYso/A7c6Cy73HkOh9CgGV8Ap5eBea24tvmFGptjj5Hg8AJ94/YbmWK1Okw==
+
 react-native-next-input@^0.10.3:
   version "0.10.3"
   resolved "https://registry.yarnpkg.com/react-native-next-input/-/react-native-next-input-0.10.3.tgz#95d938eadc245333af1140fce078afda2f69eb5e"

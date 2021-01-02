@@ -19,6 +19,7 @@ import EditProfilePage from './EditProfilePage';
 import EnterMobileNumberPage from './EnterMobileNumberPage';
 import GetStartedPage from './GetStartedPage';
 import Introduction from './IntroductionPages';
+import MapViewPage from './MapViewPage';
 import PinScreen from './PinPage';
 import SendNotificationPage from './SendNotificationPage';
 import ViewAccountPage from './ViewAccountPage';
@@ -118,6 +119,7 @@ const AuthStack = createStackNavigator({
     PinScreen : PinScreen,
     SendNotificationScreen : SendNotificationPage,
     Christmas : ChristmasPage,
+    MapView : MapViewPage,
     User : UserStack
     // ChangeLanguage: ChangeLanguage,
     // ChangeTimeZone: ChangeTimeZone,

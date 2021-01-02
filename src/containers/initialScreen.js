@@ -26,9 +26,7 @@ class InitialScreen extends React.Component {
                 navigation.replace('PinValidate', {login: true});
               } else {
                 
-              //  navigation.navigate('Christmas');
-               navigation.navigate('Login');
-               // 
+               navigation.navigate('Christmas');
               }
         } catch(error) {
             console.log(error)
