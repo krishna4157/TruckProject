@@ -3,7 +3,7 @@ import { Formik } from 'formik';
 import { Button, Input, Item, Text } from 'native-base';
 import React, { useRef } from 'react';
 import { Animated, View } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView } from 'react-native';
 import { StyleSheet } from 'react-native-web';
 import { NavigationEvents } from 'react-navigation';
 import * as Yup from 'yup';
@@ -399,7 +399,7 @@ class EditProfileScreen extends React.Component {
                            placeholder={t('LoginACSPwd')} 
                            placeholderTextColor='#bdbdbd' 
                            secureTextEntry={isPasswordVisible ? false : true} 
-                           style={{outlineWidth: 0}} 
+                          //  style={{outlineWidth: 0}} 
                            onChangeText={props.handleChange('password')}
                            />
                             
@@ -423,7 +423,7 @@ class EditProfileScreen extends React.Component {
                            placeholder={'Last Name'} 
                            placeholderTextColor='#bdbdbd' 
                            secureTextEntry={isPasswordVisible ? false : true} 
-                           style={{outlineWidth: 0}} 
+                          //  style={{outlineWidth: 0}} 
                            onChangeText={props.handleChange('password')}
                            />
                             

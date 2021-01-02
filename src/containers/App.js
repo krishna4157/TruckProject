@@ -27,7 +27,7 @@ const toastConfig = {
   success: (internalState) => toasters(internalState,'success'),
   info:  (internalState) => toasters(internalState,'info'),
 };
-class Appp extends Component {
+class App extends Component {
     state = {
       Status:'',
       loading: true,
@@ -175,4 +175,4 @@ class Appp extends Component {
 
 
 
-export default Appp;
+export default App;

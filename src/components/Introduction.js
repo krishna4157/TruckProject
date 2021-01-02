@@ -1,7 +1,7 @@
 import React from 'react';
 import { Clipboard, Dimensions, Image, Text, View } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableOpacity } from 'react-native';
 import logo from '../assets/images/butterfly.gif';
 import showToast from '../utils/toast';
 import FirstAppTour from './FirstAppTour';

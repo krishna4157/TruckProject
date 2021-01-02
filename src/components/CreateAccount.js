@@ -386,7 +386,7 @@ class CreateAccoount extends React.Component {
                            placeholder={t('LoginACSPwd')} 
                            placeholderTextColor='#bdbdbd' 
                            secureTextEntry={isPasswordVisible ? false : true} 
-                           style={{outlineWidth: 0}} 
+                          //  style={{outlineWidth: 0}} 
                            onChangeText={props.handleChange('password')}
                            />
                             <TouchableOpacity onPress={()=>{
@@ -420,7 +420,7 @@ class CreateAccoount extends React.Component {
                            placeholder={'confirm Password'} 
                            placeholderTextColor='#bdbdbd' 
                            secureTextEntry={isPasswordVisible ? false : true} 
-                           style={{outlineWidth: 0}} 
+                          //  style={{outlineWidth: 0}} 
                            onChangeText={props.handleChange('confirmPassword')}
                            />
                            <TouchableOpacity onPress={()=>{

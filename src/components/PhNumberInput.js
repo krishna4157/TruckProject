@@ -1,9 +1,18 @@
-import { Input, Item, Text } from 'native-base';
 import React from 'react';
-import { Platform, View } from 'react-native';
+import { View, Keyboard, Image,TextInput, Text as RcText, Dimensions, StatusBar, Platform, TouchableOpacity } from 'react-native';
+import { Input, Item, Button,Text, Icon, Card, CardItem, Body } from 'native-base';
+import { createForm } from 'rc-form';
+import { MaterialIcons, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
+import PhoneInput from 'react-native-phone-input';
+import CountryPicker from 'react-native-country-picker-modal';
+import * as Yup from 'yup';
+import { encrypt } from '../utils/cryptoUtil';
+import moment from 'moment';
+import { validatePhoneNumber } from '../utils/phoneNumberValidation';
+import { backgroundColor } from '../containers/NavigationScreens';
 // import PhoneNumberInput from './forgotPassword/Input';
-// import { fetchBodyTemperature, fetchLatestWeight, getWeight, testData } from './utils/healthKit/Healthkit';
-// import { saveHealthkitData } from './actions/healthkit';
+// import { fetchBodyTemperature, fetchLatestWeight, getWeight, testData } from '../utils/healthKit/Healthkit';
+// import { saveHealthkitData } from '../actions/healthkit';
 
 var number = "";
 class PhNumberInput extends React.Component {

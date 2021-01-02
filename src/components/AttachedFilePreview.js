@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Text, View, StyleSheet, Dimensions, Platform, KeyboardAvoidingView,
     TouchableOpacity, Image } from 'react-native';
 import { MaterialIcons, MaterialCommunityIcons, FontAwesome, Entypo, Feather, Foundation } from '@expo/vector-icons';
-import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView } from 'react-native';
 // import DocumentPicker from 'react-native-document-picker';
 import { backgroundColor } from '../containers/NavigationScreens';
 const { width } = Dimensions.get('window');

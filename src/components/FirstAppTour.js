@@ -28,13 +28,12 @@ import error from '../assets/images/error.png';
 import { NavigationEvents } from 'react-navigation';
 // import CustomToast from './CustomToast'; 
 import Constants from 'expo-constants';
-import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView } from 'react-native';
 // import { changeLanguage } from '../actions/changeLanguage';
 import { Formik, ErrorMessage } from 'formik';
 import PhoneInput from 'react-native-phone-input';
 import CountryPicker from 'react-native-country-picker-modal';
 import * as Yup from 'yup';
-// import { encrypt } from '../utils/cryptoUtil';
 import moment from 'moment';
 import { validatePhoneNumber } from '../utils/phoneNumberValidation';
 // import PhoneNoInput from './PhoneNoInput';
@@ -281,14 +280,6 @@ class FirstAppTour extends React.Component {
       return (
        
             <View style={{flex:1,backgroundColor:'black'}}>
-            <Animated.View style={{flex:1,backgroundColor:'red',borderRadius:10,transform: [
-                {
-                  translateX: this.state.ButtonStartValue,   
-                },
-              ]}}>
-            
-                <Text style={{fontSize:80,color:'white',textAlign:'center'}}>HELLO</Text>
-              </Animated.View>
               <View style={{flex:6,marginTop:'30%'}}>
               <FadeInView>
                   <Text style={{textAlign:'center',fontSize:25,color:'white'}}>

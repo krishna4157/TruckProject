@@ -1,15 +1,19 @@
-import AsyncStorage from '@react-native-community/async-storage';
-// import { getUniqueId, getManufacturer,getModel,getVersion } from 'react-native-device-info';
-import { Platform } from 'react-native';
-import { retrieveTimeZonesList } from '../actions/timeZone';
-import appConstants from '../constants/appConstants';
 import createActionType from '../utils/action';
 import api from '../utils/api';
-import { deviceConfig } from '../utils/deviceConfig';
+import _ from 'lodash';
+import { generateBasicAuthToken } from '../utils/util';
+import { retrieveTimeZonesList } from '../actions/timeZone';
 import { setSubjectCredentials, setSubjectDeviceToken } from '../utils/secureStorageUtils';
+import AsyncStorage from '@react-native-community/async-storage';
+// import { getUniqueId } from 'react-native-device-info';
+import Constants from 'expo-constants';
+// import { getUniqueId, getManufacturer,getModel,getVersion } from 'react-native-device-info';
+import { Platform } from 'react-native';
+import {deviceConfig} from '../utils/deviceConfig';
 // import { setupInitialHealthKit } from '../utils/healthKit/Healthkit';
 import showToast from '../utils/toast';
-import { generateBasicAuthToken } from '../utils/util';
+import uuid from 'react-uuid'
+import appConstants from '../constants/appConstants';
 
 export const LOGIN_RETRIEVE_REQUEST = createActionType('LOGIN_RETRIEVE_REQUEST')
 export const LOGIN_RETRIEVE_SUCCESS = createActionType('LOGIN_RETRIEVE_SUCCESS')

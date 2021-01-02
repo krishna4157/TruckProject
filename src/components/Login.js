@@ -263,9 +263,10 @@ class Login extends React.Component {
         phoneNo : values.phoneNo,
         loginPassword: values.password 
       };
-      const res = await api.post("/login",user);
-      console.log(res.data);
-      this.getCorrectPassword(res.data);
+      // const res = await api.post("/login",user);
+      const s = "HELLO";
+      console.log(s);
+      this.getCorrectPassword(s);
     
     } catch(e) {
       console.log(e);
@@ -418,7 +419,7 @@ class Login extends React.Component {
                            placeholder={t('LoginACSPwd')} 
                            placeholderTextColor='#bdbdbd' 
                            secureTextEntry={isPasswordVisible ? false : true} 
-                           style={{outlineWidth: 0}} 
+                          //  style={{outlineWidth: 0}} 
                            onChangeText={props.handleChange('password')}
                            />
                            <TouchableOpacity onPress={()=>{
@@ -518,14 +519,14 @@ style={{zIndex:10,position:'absolute',padding:10,height:35,borderRadius:30,margi
               <Text>        New User ?</Text>
               </Button>
               </Animated.View>
-           
-              </View>
-              <Button
+            <Button
             onPress={props.handleSubmit}
-            style={{borderRadius:30,alignContent:'flex-end',alignSelf:'flex-end',marginTop:-60}}
+            style={{borderRadius:30}}
             >
-              <Text>LOGIN</Text>
+              <Text>      LOGIN                 </Text>
               </Button>
+              </View>
+              
               <Text style={{justifyContent:'center',textAlign:'center'}}>OR</Text>
               
             <SocialIcon

@@ -2,7 +2,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Text } from 'native-base';
 import React from 'react';
 import { Dimensions, Image, TouchableOpacity, View } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView } from 'react-native';
 import UserImage1 from '../../assets/user/user1.png';
 
 

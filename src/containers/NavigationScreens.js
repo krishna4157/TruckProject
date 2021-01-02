@@ -4,7 +4,7 @@ import { createBrowserApp } from '@react-navigation/web';
 import React from 'react';
 import { Platform } from "react-native";
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { createMaterialBottomTabNavigator as createBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
 // import phoneData from '../components/phoneData';
 // import PhoneDataPage from './phoneDataPage';
