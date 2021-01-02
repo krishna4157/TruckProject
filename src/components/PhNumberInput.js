@@ -13,6 +13,7 @@ import { backgroundColor } from '../containers/NavigationScreens';
 // import PhoneNumberInput from './forgotPassword/Input';
 // import { fetchBodyTemperature, fetchLatestWeight, getWeight, testData } from '../utils/healthKit/Healthkit';
 // import { saveHealthkitData } from '../actions/healthkit';
+import Flag from 'react-native-flags';
 
 var number = "";
 class PhNumberInput extends React.Component {
@@ -57,6 +58,13 @@ class PhNumberInput extends React.Component {
         return (
              <View style={{padding:10}}>
                <View style={{flexDirection:'row',width:'100%'}}>
+                <View style={{justifyContent:'center',paddingRight:10,paddingTop:5}}>
+                <Flag
+                  type="flat"
+                  code="IN"
+                  size={32}
+                />
+                </View>
                <Item style={{ borderBottomWidth: 2,flex:1,justifyContent:'center'}}>
                                <Input
                                style={{textAlign:'center',alignItems:'center',outlineWidth: 0}}
@@ -79,7 +87,7 @@ class PhNumberInput extends React.Component {
                                <Input
                                value={phoneNumber}
                                maxLength={10}
-                               placeholder={t('LoginACSUserID')} 
+                               placeholder={'08123456789'} 
                                keyboardType="default"
                                placeholderTextColor='#bdbdbd' 
                                style={fromPinChange ? {color:'black',width:'10%',outlineWidth: 0} : {color:'black',outlineWidth: 0}} 
@@ -92,6 +100,7 @@ class PhNumberInput extends React.Component {
                                />
                            </Item>
                            </View>
+                          
              </View>   
             
         );

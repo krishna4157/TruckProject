@@ -12,9 +12,12 @@ import appConstants from '../constants/appConstants';
 import InitialScreen from '../containers/initialScreen';
 import Login from '../containers/loginPage';
 import AccountDetailsPage from './AccountDetailsPage';
+import ChooseAccountPage from './ChooseAccountPage';
 import ChristmasPage from './ChristmasPage';
 import CreateAccount from './createAccountPage';
 import EditProfilePage from './EditProfilePage';
+import EnterMobileNumberPage from './EnterMobileNumberPage';
+import GetStartedPage from './GetStartedPage';
 import Introduction from './IntroductionPages';
 import PinScreen from './PinPage';
 import SendNotificationPage from './SendNotificationPage';
@@ -107,6 +110,9 @@ const UserStack = createBottomTabNavigator({
 const AuthStack = createStackNavigator({
     InitialScreen: InitialScreen,
     Login : Login,
+    GetStartedPage : GetStartedPage,
+    EnterMobileNumber : EnterMobileNumberPage,
+    ChooseAccount : ChooseAccountPage,
     CreateAccount : CreateAccount,
     Introduction : Introduction,
     PinScreen : PinScreen,

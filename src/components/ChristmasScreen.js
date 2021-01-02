@@ -22,8 +22,8 @@ class ChristmasScreen extends React.Component {
       // this.animation.play();
       // Or set a specific startFrame and endFrame with:
     setTimeout(()=>{
-      navigation.navigate('Login');
-     },3500);
+      navigation.navigate('GetStartedPage');
+     },5500);
   }
     
 

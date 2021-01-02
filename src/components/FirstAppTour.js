@@ -279,7 +279,7 @@ class FirstAppTour extends React.Component {
 
       return (
        
-            <View style={{flex:1,backgroundColor:'black'}}>
+            <View style={{flex:1,backgroundColor:'black'}}>\
               <View style={{flex:6,marginTop:'30%'}}>
               <FadeInView>
                   <Text style={{textAlign:'center',fontSize:25,color:'white'}}>

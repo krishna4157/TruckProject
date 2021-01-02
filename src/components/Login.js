@@ -105,7 +105,7 @@ class Login extends React.Component {
       showToast('Login Successfully', 'success', 3000);  
       // navigation.navigate("NextScreenWithData",{'BackendData' : data})
       // Introduction
-      navigation.navigate("Introduction");
+      navigation.navigate("Christmas");
     }, 6000);
   } catch(e){
     this.getWrongPassword()
