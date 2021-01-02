@@ -69,7 +69,7 @@ class PhNumberInput extends React.Component {
                                <Input
                                style={{textAlign:'center',alignItems:'center',outlineWidth: 0}}
                                maxLength={5} 
-                               keyboardType="default"
+                               keyboardType="number-pad"
                                placeholderTextColor='#bdbdbd' 
                                value={phoneCode}
                                onChangeText={(value)=>{
@@ -88,7 +88,7 @@ class PhNumberInput extends React.Component {
                                value={phoneNumber}
                                maxLength={10}
                                placeholder={'08123456789'} 
-                               keyboardType="default"
+                               keyboardType="number-pad"
                                placeholderTextColor='#bdbdbd' 
                                style={fromPinChange ? {color:'black',width:'10%',outlineWidth: 0} : {color:'black',outlineWidth: 0}} 
                                onChangeText={(value)=>{

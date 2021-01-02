@@ -91,7 +91,7 @@ class EnterMobileNumber extends React.Component {
                     callingCode={'91'}
                      t={t} getPhoneValue={getPhoneValue}  />
                      {props.errors.phoneNo && props.touched.phoneNo && <Text style={{paddingLeft:10,color:'red'}}>{props.errors.phoneNo}</Text>}
-                      <TouchableOpacity style={{marginTop:5,padding:10,flexDirection:'row'}}>
+                      <TouchableOpacity onPress={()=>{navigation.navigate('ChooseAccount')}} style={{marginTop:5,padding:10,flexDirection:'row'}}>
                            <Text style={{color:'#26abff',fontSize:20,fontWeight:'bold'}}>
                              Or Connect using social media
                              </Text>

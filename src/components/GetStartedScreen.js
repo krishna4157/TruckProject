@@ -53,7 +53,7 @@ class GetStarted extends React.Component {
               </View>
               <View style={{padding:15,marginBottom:10}}>
               <Button onPress={()=>{
-                  navigation.navigate('ChooseAccount');
+                  navigation.navigate('EnterMobileNumber');
               }} style={{backgroundColor:'black',flexDirection:'row'}} full >
                   <Text style={{color:'white',marginRight:'20%',paddingLeft:'25%',fontSize:20}}>GET STARTED</Text>
                   <AntDesign style={{color:'white',alignContent:'flex-end',fontSize:30}} name={'arrowright'} />
