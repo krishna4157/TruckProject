@@ -3,7 +3,7 @@ import { Image, View, Text } from 'react-native';
 import santa from '../assets/images/santa.gif';
 import tree from '../assets/images/tree.gif';
 import { FadeInView } from '../utils/FadeInView';
-import logo from '../assets/images/butterfly.gif';
+import logo from '../assets/images/seatBelt.png';
 import { Dimensions } from 'react-native';
 import { Button } from 'native-base';
 import { MaterialIcons,Entypo, AntDesign, MaterialCommunityIcons,Ionicons, FontAwesome } from '@expo/vector-icons';
@@ -41,13 +41,14 @@ class GetStarted extends React.Component {
             <View style={{flex:1,backgroundColor:'#286ef0'}}>
               <View style={{flex:6,marginTop:'30%'}}>
               <FadeInView>
-                  <Text style={{textAlign:'center',fontSize:25,color:'white'}}>
+                  <Text style={{textAlign:'center',fontSize:20,color:'white'}}>
                       WELCOME TO TRUCK PROJECT
                       </Text>
               <Image
     source={logo}
-    style={{height:SCREEN_HEIGHT/1.5,width:'100%',alignSelf:'center',overflow:'hidden'}}
+    style={{height:SCREEN_HEIGHT/1.8,width:'100%',alignSelf:'center',overflow:'hidden'}}
   />
+  <Text style={{textAlign:'center',fontSize:30,fontWeight:'bold',fontFamily:'RalewayBold'}}>Move with Safety</Text>
               </FadeInView>
              
               </View>
