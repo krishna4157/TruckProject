@@ -1,3 +1,6 @@
+
+
+
 import React, { useRef, useEffect } from 'react';
 import { View, Keyboard, Image,TextInput, Text as RcText, Dimensions, StatusBar, Platform, TouchableOpacity, ActivityIndicator,Animated, KeyboardAvoidingView } from 'react-native';
 import { Input, Item, Button,Text, Icon, Card, CardItem, Body } from 'native-base';
@@ -54,9 +57,8 @@ import Pin from './Pin';
 import UserImage from '../../assets/user/user.png';
 import UserImage1 from '../../assets/user/user1.png';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import base64 from 'react-native-base64'
 
-class ImageHeader extends React.Component {
+class HeaderComponent extends React.Component {
 
 state = {
   pin : '',
@@ -64,57 +66,40 @@ state = {
 }
 
 componentDidMount =  async () => {
- 
-
- this.update();
-}
-
-
-update = async () => {
-  const s = await AsyncStorage.getItem('imageUri').then((val)=>{
-    return val;
+  const imageUri = await AsyncStorage.getItem('imageUri');
+  .then(()=>{
+    this.setState({
+      uri : imageUri
+    })
   });
-  this.setState({
-    uri : s
-})
-  const sr = await base64.decode(s);
-    alert(sr);
 }
 
   getPin = (value) => {
     this.setState({
       pin : value
     });
+    alert(this.state.pin);
   }
     
 
     
       
     render(){
-        const  {navigation} = this.props;
-        const  {uri} = this.state;
+        const  {title,navigation} = this.props;
+        const {uri } = this.state;
         var array = [UserImage,UserImage1];
-        const image = uri!=null ? uri : UserImage1;
+        const image = uri!='' ? uri : UserImage1;
         var randomNumber = Math.floor(Math.random() * Math.floor(array.length));
-        // return (
-        // <View style={{flexDirection:'row',padding:0,justifyContent:'space-between',backgroundColor:'transparent',zIndex:20,height:'8%',width:'10%',borderBottomLeftRadius:50,borderBottomRightRadius:0}}>
-        // {/* <Text style={{textAlign:'center',padding:10,paddingLeft:20,fontSize:25,fontFamily:'RalewayBoldItalic'}}>{title}</Text> */}
-        // <TouchableOpacity onPress={()=>{
-        //     this.props.navigation.navigate('ViewAccount');
-        // }} style={{padding:10,backgroundColor:'transparent',}}>
-        // <Image source={UserImage1} style={{borderWidth:5,borderColor:'#00b9e7',borderRadius:60,maxHeight:90,maxWidth:90}} />
-        // </TouchableOpacity>
-        // </View>);
-        
         return (
-          <TouchableOpacity onPress={()=>{
-                this.props.navigation.navigate('ViewAccount');
-             }} style={{position:'absolute',marginTop:0,zIndex:10,padding:10}}>
-               <NavigationEvents onDidFocus={()=>{this.update()}} />
-            <Image source={{uri:uri}} style={{borderWidth:5,borderColor:'#00b9e7',borderRadius:60,maxHeight:90,maxWidth:90,height:100,width:100}} />
-          </TouchableOpacity>
-        )
+      <View style={{padding:10,paddingBottom:-20,borderBottomWidth:2,borderColor:'#20a7db',width:'100%',justifyContent:'space-between',flexDirection:'row'}}>
+<Text style={{ textAlign: 'center', padding: 10,paddingTop:20, fontSize: 30, fontFamily: 'RalewayBold' }}>Krishna</Text>
+<TouchableOpacity activeOpacity={1} onPress={()=> navigation.navigate('ViewImage')} style={{marginTop:10,padding:10,position:'absolute',marginLeft:'70%'}} >
+<View>
+<Image style={{height:60,zIndex:-10,width:60,borderRadius:60,alignSelf:'flex-end',borderWidth:5,borderColor:'#20a7db',padding:50,alignContent:'flex-end',alignItems:'flex-end'}} source={image} />
+</View>
+</TouchableOpacity>
+</View>);
     }
 }
 
-export default ImageHeader;
+export default HeaderComponent;

@@ -1,5 +1,5 @@
 // import { createMaterialBottomTabNavigator as createBottomTabNavigator  } from '@react-navigation/material-bottom-tabs';
-import { Entypo, Feather, Foundation, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
+import { Entypo, Feather, Foundation, MaterialCommunityIcons, MaterialIcons,Ionicons } from '@expo/vector-icons';
 import { createBrowserApp } from '@react-navigation/web';
 import React from 'react';
 import { Platform } from "react-native";
@@ -24,7 +24,9 @@ import PinScreen from './PinPage';
 import SendNotificationPage from './SendNotificationPage';
 import ViewAccountPage from './ViewAccountPage';
 import ViewImagePage from './ViewImagePage';
-
+import { createDrawerNavigator } from 'react-navigation-drawer';
+import CameraViewPage from './CameraViewPage';
+import ForgotPasswordPage from './ForgotPasswordPage';
 
 
 
@@ -41,11 +43,18 @@ const UserAccountStack = createStackNavigator({
     AccountDetails: AccountDetailsPage,
     CreateAccount : CreateAccount,
     Introduction : Introduction,
+    CameraScreen: CameraViewPage,
     PinScreen : PinScreen,
     SendNotificationScreen : SendNotificationPage,
     ViewAccount : ViewAccountPage,
     ViewImage : {
-        screen : ViewImagePage
+        screen : ViewImagePage,
+        navigationOptions:()=>({
+          
+            tabBarVisible:app.visible,
+            title:'Info',
+            
+          })
     },
     EditProfile : EditProfilePage
     // ChangeLanguage: ChangeLanguage,
@@ -58,13 +67,8 @@ const UserAccountStack = createStackNavigator({
     // OtpVerification,
 },
     { 
-        initialRouteName: 'AccountDetails',  
+        initialRouteName: 'ViewAccount',  
         headerMode: 'none',
-        defaultNavigationOptions: ({ navigation }) => ({
-            headerVisible: false,
-            headerTitle:'red',
-            gestureEnabled: false,
-        }),
 });
 
 
@@ -108,6 +112,67 @@ const UserStack = createBottomTabNavigator({
     animationEnabled: true,
 })
 
+const MapViewPageStack = createStackNavigator(  
+    {  
+        MapView: MapViewPage,
+        ViewAccount: UserAccountStack  
+    },  
+    {  
+        defaultNavigationOptions: ({ navigation }) => {  
+            return {  
+                headerLeft: (  
+                    <Ionicons  
+                        style={{ paddingLeft: 10 }}  
+                        onPress={() => navigation.openDrawer()}  
+                        name="md-menu"  
+                        size={30}  
+                    />  
+                ),
+                headerShown: navigation.state.routeName=="MapView" ? true : false,
+                headerTitle : null 
+            };  
+        }  
+    }  
+);  
+
+const AppDrawerNavigator = createDrawerNavigator({  
+    MapView: {  
+        screen: MapViewPageStack,
+        navigationOptions: {
+            drawerIcon: (
+                <Ionicons   
+                name="md-menu"  
+                size={30}  
+            /> 
+            ),
+          },
+
+    },  
+    SendNotificationScreen : {  
+        screen : SendNotificationPage,
+        navigationOptions: {
+            drawerIcon: (
+                <Ionicons  
+                name="md-menu"  
+                size={30}  
+            /> 
+            ),
+          },  
+    },
+    CameraScreen : {
+        screen : CameraViewPage
+    },
+    forgotPassword : {
+        screen : ForgotPasswordPage,
+    } 
+});  
+
+// const AppSwitchNavigator = createSwitchNavigator({  
+//     Dashboard: { screen: AppDrawerNavigator },  
+//     Welcome: { screen: MapViewPage },  
+  
+// });  
+  
 const AuthStack = createStackNavigator({
     InitialScreen: InitialScreen,
     Login : Login,
@@ -119,7 +184,7 @@ const AuthStack = createStackNavigator({
     PinScreen : PinScreen,
     SendNotificationScreen : SendNotificationPage,
     Christmas : ChristmasPage,
-    MapView : MapViewPage,
+    MapView : AppDrawerNavigator,
     User : UserStack
     // ChangeLanguage: ChangeLanguage,
     // ChangeTimeZone: ChangeTimeZone,
@@ -148,7 +213,7 @@ const AppRoutes = createSwitchNavigator({
 UserAccountStack.navigationOptions = ({navigation}) => {
     const { routeName } = navigation.state.routes[navigation.state.index];
     app.visible = true;
-    if(routeName === 'ViewImage'){
+    if(routeName === 'ViewImage' || routeName == 'ViewAccount'){
       app.visible = false;
     }else{
       app.visible = true;

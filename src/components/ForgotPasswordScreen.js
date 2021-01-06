@@ -9,7 +9,7 @@ import Pin from './Pin';
 
 
 
-class PinScreen extends React.Component {
+class ForgotPasswordScreen extends React.Component {
 
 state = {
   pin : '',
@@ -55,9 +55,9 @@ state = {
         return (
         <View style={{flex:1,backgroundColor:'transparent',height:'100%'}}>
         <Text style={{textAlign:'center',padding:50,fontSize:25,fontFamily:'RalewayBoldItalic'}}>{title}</Text>
-          <Pin submitPin={submitPin} newPin={newPin} pin={oldPin} wrongPinColor={'#fc4236'} wrongPinMessage={'Wrong pin entered.'} errorMessage= {'Invalid PIN'} getPin={this.getPin} fillColor={'#148aca'} noOfInput={6}  round={true} />
+          <Pin submitPin={submitPin} newPin={newPin} pin={oldPin} wrongPinColor={'#fc4236'} wrongPinMessage={'Wrong pin entered.'} errorMessage= {'Invalid PIN'} getPin={this.getPin} fillColor={'#148aca'} noOfInput={6}  round={false} />
         </View>);
     }
 }
 
-export default PinScreen;
+export default ForgotPasswordScreen;

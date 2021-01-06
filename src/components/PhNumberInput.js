@@ -14,6 +14,7 @@ import { backgroundColor } from '../containers/NavigationScreens';
 // import { fetchBodyTemperature, fetchLatestWeight, getWeight, testData } from '../utils/healthKit/Healthkit';
 // import { saveHealthkitData } from '../actions/healthkit';
 import Flag from 'react-native-flags';
+import phoneNumberCodes from '../utils/phoneNumberCodes';
 
 var number = "";
 class PhNumberInput extends React.Component {
@@ -51,6 +52,11 @@ class PhNumberInput extends React.Component {
       var changeToNumeric = value.replace(/[^0-9]/g, '');
       return changeToNumeric;
     }
+
+    getCode = () => {
+      const {phoneCode} = this.state;
+      return phoneNumberCodes[phoneCode];
+    }
     
     render(){
       const { getPhoneValue,t,fromPinChange } = this.props;
@@ -61,13 +67,15 @@ class PhNumberInput extends React.Component {
                 <View style={{justifyContent:'center',paddingRight:10,paddingTop:5}}>
                 <Flag
                   type="flat"
-                  code="IN"
+                  code={this.getCode()}
                   size={32}
                 />
                 </View>
                <Item style={{ borderBottomWidth: 2,flex:1,justifyContent:'center'}}>
                                <Input
-                               style={{textAlign:'center',alignItems:'center',outlineWidth: 0}}
+                               style={{textAlign:'center',alignItems:'center',
+                              //  outlineWidth: 0
+                              }}
                                maxLength={5} 
                                keyboardType="number-pad"
                                placeholderTextColor='#bdbdbd' 
@@ -90,7 +98,11 @@ class PhNumberInput extends React.Component {
                                placeholder={'08123456789'} 
                                keyboardType="number-pad"
                                placeholderTextColor='#bdbdbd' 
-                               style={fromPinChange ? {color:'black',width:'10%',outlineWidth: 0} : {color:'black',outlineWidth: 0}} 
+                               style={fromPinChange ? {color:'black',width:'10%',
+                              //  outlineWidth: 0
+                              } : {color:'black',
+                              // outlineWidth: 0
+                            }} 
                                onChangeText={(value)=>{
                                 this.setState({
                                   phoneNumber: this.replaceText(value),

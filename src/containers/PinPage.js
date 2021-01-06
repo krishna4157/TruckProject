@@ -45,8 +45,13 @@ class PinPage extends Component {
 
         return (
             <View style={{flex:1,marginTop:30}}>
-            <PinScreen submitPin={submitPin} newPin={newPin} oldPin={oldPin} changePin={changePin} title={title} navigation={navigation}
-                title={title}
+            <PinScreen 
+                submitPin={submitPin} 
+                newPin={newPin} 
+                oldPin={oldPin} 
+                changePin={changePin} 
+                title={title} 
+                navigation={navigation}
             />
             </View>
         );

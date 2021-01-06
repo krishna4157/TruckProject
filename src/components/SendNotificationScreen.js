@@ -81,7 +81,7 @@ async function sendPushNotification(expoPushToken) {
     to: expoPushToken,
     sound: 'default',
     title: 'you are the best',
-    body: 'And here is why '+emojis[getRandomInt(emojis.length-1)]+'hgfhfhgfhfh you are the error :(!',
+    body: 'And here is why '+emojis[getRandomInt(emojis.length-1)]+'the wait is over.',
     data: { data: 'goes here' },
   };
 

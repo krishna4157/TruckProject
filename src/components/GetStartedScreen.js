@@ -48,14 +48,14 @@ class GetStarted extends React.Component {
     source={logo}
     style={{height:SCREEN_HEIGHT/1.8,width:'100%',alignSelf:'center',overflow:'hidden'}}
   />
-  <Text style={{textAlign:'center',fontSize:30,fontWeight:'bold',fontFamily:'RalewayBold'}}>Move with Safety</Text>
+  <Text style={{textAlign:'center',fontSize:30,fontWeight:'bold',fontFamily:'RalewayBold',color:'white'}}>Move with Safety</Text>
               </FadeInView>
              
               </View>
               <View style={{padding:15,marginBottom:10}}>
               <Button onPress={()=>{
                   navigation.navigate('EnterMobileNumber');
-              }} style={{backgroundColor:'black',flexDirection:'row'}} full >
+              }} style={{backgroundColor:'black',flexDirection:'row',borderRadius:10}} full >
                   <Text style={{color:'white',marginRight:'20%',paddingLeft:'25%',fontSize:20}}>GET STARTED</Text>
                   <AntDesign style={{color:'white',alignContent:'flex-end',fontSize:30}} name={'arrowright'} />
                   </Button>

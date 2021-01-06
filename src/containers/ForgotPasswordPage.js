@@ -1,22 +1,17 @@
 import React, { Component } from "react";
-// import { setupInitialHealthKit, getWeight } from '../utils/healthKit/Healthkit';
 import { View } from "react-native";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { retrieveLogin } from '../actions/login';
 // import { getDeviceToken } from '../utils/pushNotification/configurePushNotification';
 import { setCurrentScreen } from '../actions/storeAppStatus';
-import ViewAccount from "../components/ViewAccount";
-class ViewAccountScreeen extends Component {
+import ForgotPasswordScreen from "../components/ForgotPasswordScreen";
+import PinScreen from "../components/PinScreen";
+class ForgotPasswordPage extends Component {
     state={
         deviceToken: '',
     };
 
-    static navigationOptions = ({ navigation }) => {
-        return {
-            headerMode : null
-        }
-    }
     // componentDidMount(){
     //     const {setCurrentScreen}=this.props;
 
@@ -41,12 +36,25 @@ class ViewAccountScreeen extends Component {
     render() {
         const { navigation, } = this.props;
         const { deviceToken } = this.state;
-        // const text = navigation.getParam("BackendData");
+        const title = navigation.getParam("title") || "forgot Password";
+        const changePin = navigation.getParam("ChangePin") || false;
+        const oldPin = navigation.getParam("oldPin") || true;
+        const newPin = navigation.getParam("newPin") || false;
+        const submitPin = navigation.getParam("submitPin") || false;
+        
+        
+
         return (
             <View style={{flex:1,marginTop:30}}>
-            {/* <HeaderComponent navigation={navigation} />  */}
-           <ViewAccount navigation={navigation} />
-           </View>
+            <ForgotPasswordScreen 
+                submitPin={submitPin} 
+                newPin={newPin} 
+                oldPin={oldPin} 
+                changePin={changePin} 
+                title={title} 
+                navigation={navigation}
+            />
+            </View>
         );
     }
 }
@@ -68,4 +76,4 @@ const mapDispatchToProps = dispatch => bindActionCreators(
     dispatch,
   );
 
-export default connect(mapStateToProps, mapDispatchToProps)(ViewAccountScreeen);
+export default connect(mapStateToProps, mapDispatchToProps)(ForgotPasswordPage);
