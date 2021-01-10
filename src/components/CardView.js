@@ -22,6 +22,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons'; 
 
 import PhNumberInput from './PhNumberInput';
+import SendNotificationScreen from './SendNotificationScreen';
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window')
 
 
@@ -264,6 +265,10 @@ const {hideOpenView} = this.props;
       this.getWrongPassword(e);
     }
   }
+
+  sendNotification = async  () => {
+    await SendNotificationScreen();
+  }
     
       
     render(){
@@ -318,7 +323,9 @@ const {hideOpenView} = this.props;
               </Button>
               </View>
               <View style={{padding:10}}>
-              <Button style={{borderRadius:20,backgroundColor:'#20a7db',alignSelf:'center'}} >
+              <Button onPress={()=>{
+                this.sendNotification();
+              }} style={{borderRadius:20,backgroundColor:'#20a7db',alignSelf:'center'}} >
               <FontAwesome style={{marginLeft:10}} name="picture-o" size={24} color="black" />
                 <Text>Choose from Album</Text>
               </Button>

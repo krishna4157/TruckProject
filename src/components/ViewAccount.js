@@ -64,7 +64,7 @@ class ViewAccount extends React.Component {
                      this.setState({
                          openView : false
                      })
-                 }} style={{height:SCREEN_HEIGHT,width:SCREEN_WIDTH,position:'absolute',backgroundColor:'red',zIndex:10}} />
+                 }} style={{height:SCREEN_HEIGHT,width:SCREEN_WIDTH,position:'absolute',backgroundColor:'transparent',zIndex:10}} />
                  </BlurView>}
                 <View style={{padding:10,paddingBottom:-20,borderBottomWidth:2,borderColor:'#20a7db',width:'100%',justifyContent:'space-between',flexDirection:'row'}}>
                     <Text style={{ textAlign: 'center', padding: 10,paddingTop:20, fontSize: 30, fontFamily: 'RalewayBold' }}>Krishna</Text>
