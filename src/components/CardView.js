@@ -18,6 +18,8 @@ import { validatePhoneNumber } from '../utils/phoneNumberValidation';
 // import { fetchBodyTemperature, fetchLatestWeight, getWeight, testData } from '../utils/healthKit/Healthkit';
 // import { saveHealthkitData } from '../actions/healthkit';
 import showToast from '../utils/toast';
+import { Ionicons } from '@expo/vector-icons'; 
+import { FontAwesome } from '@expo/vector-icons'; 
 
 import PhNumberInput from './PhNumberInput';
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window')
@@ -299,7 +301,7 @@ const {hideOpenView} = this.props;
                 {
                   translateY: this.state.startValue,
                 },
-              ],}}>
+              ],zIndex:20}}>
                 
            <FadeInView>
             <TouchableOpacity onPressIn={()=>{this.hideTheActionSheet()}} style={{backgroundColor:'transparent',zIndex:10,height:20,marginTop:-10,width:SCREEN_WIDTH,marginLeft:-10,position:'absolute'}} onPress={()=>{this.hideTheActionSheet()}} >
@@ -311,11 +313,13 @@ const {hideOpenView} = this.props;
                 this.hideTheActionSheet();
                 this.props.navigation.navigate('CameraScreen');
                 }} style={{borderRadius:20,backgroundColor:'#20a7db',alignSelf:'center'}} >
+                <Ionicons name="camera" style={{marginLeft:10}} size={24} color="black" />
                 <Text>take a Picture</Text>
               </Button>
               </View>
               <View style={{padding:10}}>
               <Button style={{borderRadius:20,backgroundColor:'#20a7db',alignSelf:'center'}} >
+              <FontAwesome style={{marginLeft:10}} name="picture-o" size={24} color="black" />
                 <Text>Choose from Album</Text>
               </Button>
               </View>

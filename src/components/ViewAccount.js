@@ -8,6 +8,7 @@ import UserImage1 from '../../assets/user/user1.png';
 import AsyncStorage from '@react-native-community/async-storage';
 import base64 from 'react-native-base64'
 import CardView from './CardView';
+import { BlurView } from 'expo-blur';
 
 const {width:SCREEN_WIDTH, height: SCREEN_HEIGHT} = Dimensions.get('window')
 
@@ -57,11 +58,14 @@ class ViewAccount extends React.Component {
         return (
             <View style={{ flex: 1, flexDirection: 'column', backgroundColor: 'transparent', height: '100%',width:'100%', justifyContent: 'flex-start', alignContent: 'flex-start', alignSelf: 'flex-start', alignItems: 'flex-start' }}>
                  <NavigationEvents onDidFocus={()=>{this.update()}} />
-                 {openView && <TouchableOpacity onPress={()=>{
+                 {openView && 
+                 <BlurView style={{height:SCREEN_HEIGHT,width:SCREEN_WIDTH,position:'absolute',backgroundColor:'transparent',zIndex:10}} intensity={300} >
+                 <TouchableOpacity onPress={()=>{
                      this.setState({
                          openView : false
                      })
-                 }} style={{height:SCREEN_HEIGHT,width:SCREEN_WIDTH,position:'absolute',backgroundColor:'transparent',zIndex:10}} />}
+                 }} style={{height:SCREEN_HEIGHT,width:SCREEN_WIDTH,position:'absolute',backgroundColor:'red',zIndex:10}} />
+                 </BlurView>}
                 <View style={{padding:10,paddingBottom:-20,borderBottomWidth:2,borderColor:'#20a7db',width:'100%',justifyContent:'space-between',flexDirection:'row'}}>
                     <Text style={{ textAlign: 'center', padding: 10,paddingTop:20, fontSize: 30, fontFamily: 'RalewayBold' }}>Krishna</Text>
                 </View>
