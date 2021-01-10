@@ -53,7 +53,7 @@ import PinInputBox from './PinInputBox';
 import Pin from './Pin';
 import UserImage from '../../assets/user/user.png';
 import UserImage1 from '../../assets/user/user1.png';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from '@react-native-community/async-storage';
 import base64 from 'react-native-base64'
 
 class ImageHeader extends React.Component {
@@ -73,12 +73,13 @@ componentDidMount =  async () => {
 update = async () => {
   const s = await AsyncStorage.getItem('imageUri').then((val)=>{
     return val;
+    
   });
   this.setState({
     uri : s
 })
   const sr = await base64.decode(s);
-    alert(sr);
+    // alert(sr);
 }
 
   getPin = (value) => {
@@ -94,7 +95,7 @@ update = async () => {
         const  {navigation} = this.props;
         const  {uri} = this.state;
         var array = [UserImage,UserImage1];
-        const image = uri!=null ? uri : UserImage1;
+        const image = uri!=null ? {uri:  uri} : UserImage1;
         var randomNumber = Math.floor(Math.random() * Math.floor(array.length));
         // return (
         // <View style={{flexDirection:'row',padding:0,justifyContent:'space-between',backgroundColor:'transparent',zIndex:20,height:'8%',width:'10%',borderBottomLeftRadius:50,borderBottomRightRadius:0}}>
@@ -111,7 +112,7 @@ update = async () => {
                 this.props.navigation.navigate('ViewAccount');
              }} style={{position:'absolute',marginTop:0,zIndex:10,padding:10}}>
                <NavigationEvents onDidFocus={()=>{this.update()}} />
-            <Image source={{uri:uri}} style={{borderWidth:5,borderColor:'#00b9e7',borderRadius:60,maxHeight:90,maxWidth:90,height:100,width:100}} />
+            <Image source={image} style={{borderWidth:5,borderColor:'#00b9e7',borderRadius:60,maxHeight:90,maxWidth:90,height:100,width:100}} />
           </TouchableOpacity>
         )
     }

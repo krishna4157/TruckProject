@@ -56,7 +56,7 @@ import PinInputBox from './PinInputBox';
 import Pin from './Pin';
 import UserImage from '../../assets/user/user.png';
 import UserImage1 from '../../assets/user/user1.png';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from '@react-native-community/async-storage';
 
 class HeaderComponent extends React.Component {
 
@@ -66,7 +66,7 @@ state = {
 }
 
 componentDidMount =  async () => {
-  const imageUri = await AsyncStorage.getItem('imageUri');
+  const imageUri = await AsyncStorage.getItem('imageUri')
   .then(()=>{
     this.setState({
       uri : imageUri
@@ -88,14 +88,16 @@ componentDidMount =  async () => {
         const  {title,navigation} = this.props;
         const {uri } = this.state;
         var array = [UserImage,UserImage1];
-        const image = uri!='' ? uri : UserImage1;
+        const image = uri!=null ? {uri: uri} : UserImage1;
         var randomNumber = Math.floor(Math.random() * Math.floor(array.length));
         return (
       <View style={{padding:10,paddingBottom:-20,borderBottomWidth:2,borderColor:'#20a7db',width:'100%',justifyContent:'space-between',flexDirection:'row'}}>
 <Text style={{ textAlign: 'center', padding: 10,paddingTop:20, fontSize: 30, fontFamily: 'RalewayBold' }}>Krishna</Text>
 <TouchableOpacity activeOpacity={1} onPress={()=> navigation.navigate('ViewImage')} style={{marginTop:10,padding:10,position:'absolute',marginLeft:'70%'}} >
 <View>
-<Image style={{height:60,zIndex:-10,width:60,borderRadius:60,alignSelf:'flex-end',borderWidth:5,borderColor:'#20a7db',padding:50,alignContent:'flex-end',alignItems:'flex-end'}} source={image} />
+<Image source={image} style={{borderWidth:5,borderColor:'#00b9e7',borderRadius:60,maxHeight:90,maxWidth:90,height:100,width:100}} />
+
+{/* <Image style={{height:60,zIndex:-10,width:60,borderRadius:60,alignSelf:'flex-end',borderWidth:5,borderColor:'#20a7db',padding:50,alignContent:'flex-end',alignItems:'flex-end'}} source={UserImage} /> */}
 </View>
 </TouchableOpacity>
 </View>);

@@ -176,62 +176,7 @@ class Login extends React.Component {
 
   
     
-  //     wrongPassword=()=>{
-  //   // NewAnimated.spring(this.moveAnimation, {
-  //   //   toValue: {x: -180, y: 0},
-  //   // }).start();
-  //   this.setState({
-  //     passwordColor: 'red'
-  //   })
-  //   setTimeout(()=>{
-  //     this.setState({
-  //       passwordColor:'#3498DB'
-  //     });
-  //     NewAnimated.spring(this.moveAnimation, {
-  //       toValue: {x: -180, y: 0},
-  //     }).start();
-  //     NewAnimated.spring(this.textAnimation, {
-  //       toValue: {x: 20, y: 0},
-  //     }).start();
-  //   },5000)
-  // }
-
-  // rightPassword=()=>{
-  //   this.setState({
-  //     passwordColor: 'green'
-  //   })
-  //   this.setDataAndNavigate()
-  // }
-
-  // loginValidate = () => {
-  //   NewAnimated.spring(this.moveAnimation, {
-  //     toValue: {x: 0, y: 0},
-  //   }).start();
-  //   NewAnimated.spring(this.textAnimation, {
-  //     toValue: {x: -150, y: 0},
-  //   }).start();
-  //   // this.wrongPassword();
-  //   this.rightPassword();
-  //   // this.setDataAndNavigate()
-  // }
-
-  // moveRight = () => {
-  //   NewAnimated.spring(this.moveAnimation, {
-  //     toValue: {x: -215, y: 0},
-  //   }).start()
-  // }
-
-  //   animate (easing) {
-  //     this.animatedValue.setValue(0)
-  //       Animated.timing(
-  //         this.animatedValue,
-  //         {
-  //           toValue: 1,
-  //           duration: 100,
-  //           easing
-  //         }
-  //     ).start()
-  //   }
+ 
 
   onSubmit = (values) => {
     alert(JSON.stringify(values));

@@ -6,7 +6,7 @@ import UserImage1 from '../../assets/user/user1.png';
 // import { fetchBodyTemperature, fetchLatestWeight, getWeight, testData } from '../utils/healthKit/Healthkit';
 // import { saveHealthkitData } from '../actions/healthkit';
 import showToast from '../utils/toast';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from '@react-native-community/async-storage';
 import base64 from 'react-native-base64'
 import { NavigationEvents } from 'react-navigation';
 

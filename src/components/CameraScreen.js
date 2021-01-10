@@ -5,13 +5,14 @@ import {Camera} from 'expo-camera';
 import * as MediaLibrary from 'expo-media-library';
 import { Permissions } from 'react-native-unimodules';
 import CameraRoll, { save, saveToCameraRoll } from "@react-native-community/cameraroll";
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from '@react-native-community/async-storage';
 import ImgToBase64 from 'react-native-image-base64';
 import base64 from 'react-native-base64'
+import { NavigationEvents } from 'react-navigation';
 
 
 let camera = Camera;
-export default function CameraScreen() {
+export default function CameraScreen({navigation}) {
   const [startCamera, setStartCamera] = React.useState(false)
   const [previewVisible, setPreviewVisible] = React.useState(false)
   const [capturedImage, setCapturedImage] = React.useState(null)
@@ -52,7 +53,6 @@ export default function CameraScreen() {
     
 let imagePath = null;
 
-  alert(s);
   const st = await base64.encode(capturedImage.uri);
   console.log(st);
       await AsyncStorage.setItem('imageUri',capturedImage.uri);
@@ -66,7 +66,7 @@ let imagePath = null;
     .catch(error => {
       console.log('err', error);
     });
-    alert('Saved');
+    navigation.goBack();
   }catch (e){
     console.log(e);
   }
@@ -209,6 +209,7 @@ let imagePath = null;
             alignItems: 'center'
           }}
         >
+           <NavigationEvents onDidFocus={()=>{__startCamera()}} />
           <TouchableOpacity
             onPress={__startCamera}
             style={{

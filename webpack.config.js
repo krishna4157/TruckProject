@@ -10,10 +10,23 @@ module.exports = async function(env, argv) {
                     o.include = [
                         path.resolve('.'),
                         path.resolve('node_modules/react-stompjs/*'),
+                        path.resolve('node_modules/react-native-toast-message/*'),
                     ]
+
                 }
             })
         }
     })
+    return config;
+};
+
+
+module.exports = async function (env, argv) {
+    const config = await createExpoWebpackConfigAsync({
+        ...env,
+        babel: {
+            dangerouslyAddModulePathsToTranspile: ['@codler/react-native-keyboard-aware-scroll-view']
+        }
+    }, argv);
     return config;
 };
