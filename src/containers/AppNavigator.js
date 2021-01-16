@@ -6,7 +6,7 @@ import OfflineNotice from '../components/OfflineNotice';
 import { connect } from "react-redux";
 import { storeOfflineFormsToSync} from '../actions/storeAppStatus';
 import { bindActionCreators } from "redux";
-import { View, Platform } from 'react-native';
+import { View, Platform, TouchableOpacity } from 'react-native';
 import {getOfflineForms,checkForDataSync} from '../utils/offline/dataSync';
 import  {storeSyncStatus,updateSyncCompleteStatus} from '../actions/storeAppStatus';
 import _ from 'lodash';
@@ -14,6 +14,13 @@ import _ from 'lodash';
 import Popup from "../components/Popup";
 import HeaderComponent from "../components/Header";
 var i=0;
+import * as Location from 'expo-location';
+import { Text } from "react-native";
+
+import logo from '../assets/images/gps.gif';
+import { Image } from "react-native";
+import { Dimensions } from "react-native";
+const {width:SCREEN_WIDTH, height: SCREEN_HEIGHT} = Dimensions.get('window');
 
 class AppNavigation extends Component {
 
@@ -23,6 +30,7 @@ class AppNavigation extends Component {
     connectionStatus: '',
     visible: false,
     errorMessage: '',
+    isLocationAvailable: true
     // Status:'',
     // loading: true,
     // isConnected: false,
@@ -34,13 +42,26 @@ class AppNavigation extends Component {
 //     NetInfo.isConnected.removeEventListener('connectionChange', this.handleConnectivityChange);
 //  }
 
- componentDidMount(){
+ componentDidMount = async() => {
   // this.unsubscribe();
   // NetInfo.addEventListener('connectionChange', this.handleConnectivityChange);
+  Location.getProviderStatusAsync();
 if(Platform.OS!="web"){
   NetInfo.addEventListener(state => {
     this.handleConnectivityChange(state);
   });
+
+  let status = await Location.getProviderStatusAsync();
+if(!status.gpsAvailable){
+  this.setState({
+    isLocationAvailable : false
+  })
+} else {
+  this.setState({
+    isLocationAvailable : true
+  })
+}
+
 }
 
 
@@ -141,6 +162,17 @@ setDissapearStatus = () => {
     disappear: false
   })
 }
+
+getLocationAsync = async () => {
+  let { status } = await Location.getCurrentPositionAsync();
+  if (status !== 'granted') {
+    this.setState({
+      isLocationAvailable: true,
+    });
+  } else {
+    this.setState({ isLocationAvailable: false });
+  }
+}
   
   render() {
     const { screenProps ,isConnected,appStatus,unreadChats} = this.props;
@@ -149,6 +181,7 @@ setDissapearStatus = () => {
       ...screenProps,
       unreadChats: unreadChats
     }
+    if(this.state.isLocationAvailable) {
     return (
       <View style={{flex:1}}>
       {disappear ==false && Platform.OS!='web' && <OfflineNotice setDissapearStatus={this.setDissapearStatus} stopToaster={this.stopToaster} t={screenProps.t} isInternetReachable={isInternetReachable} isConnected={isConnected} />}
@@ -158,6 +191,27 @@ setDissapearStatus = () => {
     {/* { appStatus.isDeviceOnline ==false &&<Popup t={screenProps.t} message={errorMessage} visible={visible} closePopup={this.closePopup} color={"#e57373"}  />} */}
       </View>
     );
+    } else {
+      return (
+        <View style={{flex:1}}>
+        {/* {disappear ==false && Platform.OS!='web' && <OfflineNotice setDissapearStatus={this.setDissapearStatus} stopToaster={this.stopToaster} t={screenProps.t} isInternetReachable={isInternetReachable} isConnected={isConnected} />} */}
+        <View style={{flex:1,justifyContent:'space-evenly'}}>
+        <Image
+    source={logo}
+    style={{height:SCREEN_HEIGHT/1.8,width:'100%',alignSelf:'center',overflow:'hidden'}}
+  />
+  <Text  style={{alignSelf:'center',alignItems:'center',fontSize:25,fontWeight:'bold'}}> GPS Turned off </Text>
+  <Text  style={{alignSelf:'center',alignItems:'center',fontSize:20,textAlign:'center',padding:10}}>Please Allow Project to turn on your phone GPS for accurate pickup. </Text>
+<TouchableOpacity style={{alignSelf:'center',alignItems:'center',justifyContent:'flex-end',backgroundColor:'red',padding:10,paddingLeft:30,paddingRight:30,borderRadius:15}}>
+  <Text onPress={()=>{
+    this.getLocationAsync();
+  }}>TURN ON GPS</Text>
+  </TouchableOpacity>
+  </View>
+      {/* { appStatus.isDeviceOnline ==false &&<Popup t={screenProps.t} message={errorMessage} visible={visible} closePopup={this.closePopup} color={"#e57373"}  />} */}
+        </View>
+      );
+    }
   }
 }
 

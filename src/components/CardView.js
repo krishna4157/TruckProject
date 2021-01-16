@@ -330,7 +330,7 @@ const {hideOpenView} = this.props;
                 <Text>Choose from Album</Text>
               </Button>
               </View>
-              <View style={{padding:10}}>
+              <View style={{padding:10,paddingBottom:20,marginTop:-5}}>
               <TouchableOpacity onPress={this.hideTheActionSheet} style={{borderRadius:20,padding:10,paddingLeft:15,paddingRight:15,backgroundColor:'red',alignSelf:'center'}} >
                 <Text>CANCEL</Text>
               </TouchableOpacity>

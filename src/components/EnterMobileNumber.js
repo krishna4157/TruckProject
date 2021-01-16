@@ -1,9 +1,10 @@
 import React from 'react';
-import { Image, View, Text } from 'react-native';
+import { Image, View, Text, Animated } from 'react-native';
 import santa from '../assets/images/santa.gif';
 import tree from '../assets/images/tree.gif';
 import { FadeInView } from '../utils/FadeInView';
-import logo from '../assets/images/butterfly.gif';
+import logo from '../assets/images/driveFront.gif';
+import road from '../assets/images/road.png';
 import { Dimensions } from 'react-native';
 import { Button } from 'native-base';
 import { MaterialIcons, Entypo, AntDesign, MaterialCommunityIcons, Ionicons, FontAwesome } from '@expo/vector-icons';
@@ -12,6 +13,8 @@ import { SocialIcon } from 'react-native-elements';
 import PhNumberInput from './PhNumberInput';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import logo1 from '../assets/images/lorry.png';
+
 import Flag from 'react-native-flags';
 import { validatePhoneNumber } from '../utils/phoneNumberValidation';
 
@@ -20,6 +23,26 @@ const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
 
 class EnterMobileNumber extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.Animation = new Animated.Value(0);
+    this.state = {
+      startValue: new Animated.Value(- SCREEN_WIDTH + SCREEN_WIDTH / 2 ),
+      ButtonStartValue: new Animated.Value(-180),
+      moveLeftValue: new Animated.Value(0),
+      moveRightValue: new Animated.Value(360),
+      endValue: SCREEN_WIDTH+60,
+      buttonEndValue: -5,
+      isLoading: false,
+      endMoveValue: 300,
+      duration: 2000,
+      isVisible: false,
+      isSuccess: 0,
+      isPasswordVisible: false,
+      statusColor: 'yellow'
+    };
+  }
 
     getPin = (value) => {
         this.setState({
@@ -50,7 +73,18 @@ class EnterMobileNumber extends React.Component {
 
       checkValues = () => {
         const  {navigation} = this.props;
-        navigation.navigate('MapView');
+        this.setState({
+          isLoading : true
+        })
+        Animated.timing(this.state.startValue, {
+          toValue: this.state.endValue,
+          duration: this.state.duration,
+          useNativeDriver: false,
+        }).start();
+        setTimeout(() => {
+          navigation.navigate('MapView');  
+        }, 2200);
+        
       }
 
 
@@ -103,6 +137,30 @@ class EnterMobileNumber extends React.Component {
                              <AntDesign style={{color:'#26abff',alignContent:'flex-end',fontSize:30,marginLeft:10}} name={'arrowright'} />
 
                              </TouchableOpacity>
+                             <Animated.View style={{
+      justifyContent:'center',marginTop:'50%'
+      ,transform: [
+                {
+                  translateX: this.state.startValue,
+                  
+                },
+              ],}}>
+                            {/* <View style={{marginLeft:'-80%',justifyContent:'center',marginTop:'50%'}}> */}
+           {this.state.isLoading ? 
+                             <Image
+    source={logo}
+    style={{alignSelf:'center',overflow:'hidden'}}
+  /> : 
+  <Image
+    source={logo1}
+    style={{alignSelf:'center',overflow:'hidden'}}
+  />}
+  {/* </View> */}
+  </Animated.View>
+  <Image
+    source={road}
+    style={{alignSelf:'center',overflow:'hidden',marginTop:-30,zIndex:-10}}
+  />
                </FadeInView>
                <View style={{flex:1,alignSelf:'flex-end',alignItems:'flex-end',alignContent:'flex-end',flexDirection:'row'}}>
                <View style={{marginLeft:60,paddingBottom:3}} >

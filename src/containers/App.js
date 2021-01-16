@@ -22,6 +22,9 @@ import OfflineNotice from '../components/OfflineNotice';
 import { getItem } from '../utils/secureStorageUtils';
 import toasters from  '../constants/toasters';
 import Toast from 'react-native-toast-message';
+import LocationServicesDialogBox from "react-native-android-location-services-dialog-box";
+import NoInternetPage from './NoInternetPage';
+
 const toastConfig = {
   error:  (internalState) => toasters(internalState,'error'),
   success: (internalState) => toasters(internalState,'success'),
@@ -33,12 +36,13 @@ class App extends Component {
       loading: true,
       locale: 'en-US',
       isReady: false,
-      isAppReady: false
+      isAppReady: false,
+      locationEnabled : true
     };
 
   async componentDidMount () {
     // this.unsubscribe();
-    
+   
     // SplashScreen.hideAsync()
     // NetInfo.addEventListener('connectionChange', this.handleConnectivityChange);
     console.disableYellowBox = true;
@@ -133,7 +137,7 @@ class App extends Component {
                 
       // {disappear ==false && <OfflineNotice isInternetReachable={isInternetReachable} isConnected={this.state.isConnected} />} 
           !loading ? 
-          <AppNavigation 
+       <AppNavigation 
           screenProps={{
             t: this.t,
             locale: locale,
@@ -141,7 +145,7 @@ class App extends Component {
             // isConnected: isConnected
           }}
         />
-         : <View/>}
+         : <View><Text style={{fontSize:50}}>helo</Text></View>}
           <Toast config={toastConfig} ref={(ref) => Toast.setRef(ref)} />
 
                 {/* </SafeAreaProvider> */}

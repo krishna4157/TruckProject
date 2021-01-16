@@ -27,6 +27,7 @@ import ViewImagePage from './ViewImagePage';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import CameraViewPage from './CameraViewPage';
 import ForgotPasswordPage from './ForgotPasswordPage';
+import AaboutPage from './AaboutPage';
 
 
 
@@ -56,6 +57,7 @@ const UserAccountStack = createStackNavigator({
             
           })
     },
+    AboutPage : AaboutPage,
     EditProfile : EditProfilePage
     // ChangeLanguage: ChangeLanguage,
     // ChangeTimeZone: ChangeTimeZone,
