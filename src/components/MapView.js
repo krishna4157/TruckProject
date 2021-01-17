@@ -1,4 +1,4 @@
-import { Card, Input, Text } from 'native-base';
+import { Button, Card, Input, Text } from 'native-base';
 import React from 'react';
 import { Image, View } from 'react-native';
 import santa from '../assets/images/santa.gif';
@@ -26,6 +26,9 @@ class MapViewScreen extends React.Component {
     location: { coords: { latitude: 37.78825, longitude: -122.4324 } },
     latitudeDelta: 0.0042,
     longitudeDelta: 0.0021,
+    coords : [],
+    loading: true,
+    showDirections : false
   };
 
   componentDidMount() {
@@ -59,7 +62,7 @@ class MapViewScreen extends React.Component {
   };
 
   setlocation = async (event) => {
-    // let resp = await fetch(`https://maps.googleapis.com/maps/api/directions/json?origin=Brooklyn&destination=Queens&key=AIzaSyD0uufPZfC4jhqAlqywniMTpr1zaqgF7RQ`)
+    // let resp = await fetch(`https://api.tomtom.com/routing/1/calculateRoute/52.50931,13.42936:52.50274,13.43872/json?key=I6ZQpMS93FxiP6lxrwWzxDK2SfS3OVGN`)
     
     //          let respJson = await resp.json();
     //          alert(JSON.stringify(respJson));
@@ -79,7 +82,50 @@ class MapViewScreen extends React.Component {
       latitudeDelta: latitudeDelta1,
       longitudeDelta: longitudeDelta1, 
     }
-    this.setState({markedCoordinates : s});
+    this.setState({markedCoordinates : s}).then(()=>this.getDirections());
+    console.log('sssss');
+    console.log(s);
+    // this.getDirections()
+
+  }
+
+  getDirections = async() => {
+    // let s = startLoc;
+    const s = this.state.mapRegion;
+    alert(`${s.latitude},${s.longitude}:${this.state.markedCoordinates.latitude},${this.state.markedCoordinates.longitude}`);
+         try {
+             let resp = await fetch(`https://api.tomtom.com/routing/1/calculateRoute/${s.latitude},${s.longitude}:${this.state.markedCoordinates.latitude},${this.state.markedCoordinates.longitude}/json?key=I6ZQpMS93FxiP6lxrwWzxDK2SfS3OVGN`);
+             let respJson = await resp.json();
+            //  alert(JSON.stringify(respJson));
+             let points = respJson.routes[0].legs[0].points;
+             let coords = points.map((point, index) => {
+                 return  {
+                     latitude : point.latitude,
+                     longitude : point.longitude,
+                     latitudeDelta: latitudeDelta1,
+                     longitudeDelta: longitudeDelta1, 
+                 }
+             })
+             console.log("coord");
+             console.log(coords);
+             this.setState({coords: coords})
+             this.setState({x: "true"})
+             this.setState({
+               loading : false
+             })
+             return coords;
+         } catch(error) {
+           console.log(error)
+             this.setState({x: "error"})
+             return error
+         }
+  }
+
+  showDirections = () => {
+    this.getDirections();
+    this.setState({
+      showDirections : true
+    });
   }
 
   setRegion = (val) => {
@@ -106,8 +152,7 @@ const GOOGLE_MAPS_APIKEY = 'AIzaSyD0uufPZfC4jhqAlqywniMTpr1zaqgF7RQ';
           showsMyLocationButton={true}
           style={{ alignSelf: 'stretch', flex: 1 }}
           region={this.state.mapRegion}
-          onRegionChange={this._handleMapRegionChange}
-        
+          onRegionChange={this._handleMapRegionChange}        
         >
           <Marker
             key={'1'}
@@ -124,19 +169,39 @@ const GOOGLE_MAPS_APIKEY = 'AIzaSyD0uufPZfC4jhqAlqywniMTpr1zaqgF7RQ';
             title={'Marked point'}
             description={`longitude : ${this.state.markedCoordinates.longitude} lattitude : ${this.state.markedCoordinates.latitude} `}
           />}
-<MapViewDirections
+{/* <MapViewDirections
     origin={this.state.mapRegion}
-    destination={destination}
-    apikey={'AIzaSyD0uufPZfC4jhqAlqywniMTpr1zaqgF7RQ'}
-  />
-  {this.state.markedCoordinates!='' &&<MapView.Polyline
+    destination={this.state.coords[1]}
+    apikey={'I6ZQpMS93FxiP6lxrwWzxDK2SfS3OVGNs'}
+  /> */}
+  {/* {this.state.markedCoordinates!='' && this.state.coords.map((value,index)=> {
+    if(index+1<this.state.coords.length){
+     return (<MapView.Polyline
+     key={index}
           coordinates={[
-              this.state.mapRegion,
-              this.state.markedCoordinates,
+              value,
+              this.state.coords[index+1],
           ]}
           strokeWidth={3}
           strokeColor="blue"
-  />}
+  />)
+        }
+  }) } */}
+  {this.state.markedCoordinates!='' && !this.state.loading && this.state.showDirections && this.state.coords.map((value,index)=> {
+    
+    if(this.state.coords[index+1]!=undefined){
+      console.log(value);
+     return (<MapView.Polyline
+     key={index}
+          coordinates={[
+              value,
+              this.state.coords[index+1],
+          ]}
+          strokeWidth={3}
+          strokeColor="blue"
+  />)
+        }
+  })}
         </MapView>
         <View style={{ backgroundColor: 'white', paddingBottom: 5,elevation:1005,shadowColor:'black' }}>
           <View style={{ flexDirection: 'column', position: 'relative', borderRadius: 30, flexDirection: 'column', width: '100%' }}>
@@ -166,6 +231,11 @@ const GOOGLE_MAPS_APIKEY = 'AIzaSyD0uufPZfC4jhqAlqywniMTpr1zaqgF7RQ';
                   placeholderTextColor='#bdbdbd'
                   secureTextEntry={false}
                 />
+                <Button onPress={()=>{
+                  this.showDirections();
+                }}>
+                  <Text>HELO</Text>
+                  </Button>
               </View>
             </View>
             <View />
