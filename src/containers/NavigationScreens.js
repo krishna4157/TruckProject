@@ -50,12 +50,12 @@ const UserAccountStack = createStackNavigator({
     ViewAccount : ViewAccountPage,
     ViewImage : {
         screen : ViewImagePage,
-        navigationOptions:()=>({
+        // navigationOptions:()=>({
           
-            tabBarVisible:app.visible,
-            title:'Info',
+        //     tabBarVisible:app.visible,
+        //     title:'Info',
             
-          })
+        //   })
     },
     AboutPage : AaboutPage,
     EditProfile : EditProfilePage
@@ -216,9 +216,8 @@ UserAccountStack.navigationOptions = ({navigation}) => {
     const { routeName } = navigation.state.routes[navigation.state.index];
     app.visible = true;
     if(routeName === 'ViewImage' || routeName == 'ViewAccount'){
+        // alert(app.visible);
       app.visible = false;
-    }else{
-      app.visible = true;
     }
   }
 

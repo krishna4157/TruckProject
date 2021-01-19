@@ -40,7 +40,7 @@ class ViewImagePage extends Component {
         const { deviceToken } = this.state;
         // const text = navigation.getParam("BackendData");
         return (
-            <View style={{flex:1,marginTop:30}}>
+            <View style={{flex:1}}>
             {/* <HeaderComponent navigation={navigation} />  */}
            <ViewImage />
            </View>
