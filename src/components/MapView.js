@@ -231,12 +231,14 @@ const GOOGLE_MAPS_APIKEY = 'AIzaSyD0uufPZfC4jhqAlqywniMTpr1zaqgF7RQ';
                   placeholderTextColor='#bdbdbd'
                   secureTextEntry={false}
                 />
-                <Button onPress={()=>{
+              </View>
+              <View>
+              <Button style={{alignSelf:'center',borderRadius:20,backgroundColor:'green'}} onPress={()=>{
                   this.showDirections();
                 }}>
-                  <Text>HELO</Text>
+                  <Text>Get directions</Text>
                   </Button>
-              </View>
+                  </View>
             </View>
             <View />
           </View>
