@@ -28,7 +28,7 @@ class EnterMobileNumber extends React.Component {
     super(props);
     this.Animation = new Animated.Value(0);
     this.state = {
-      startValue: new Animated.Value(- SCREEN_WIDTH + SCREEN_WIDTH / 2 ),
+      startValue: new Animated.Value(- SCREEN_WIDTH),
       ButtonStartValue: new Animated.Value(-180),
       moveLeftValue: new Animated.Value(0),
       moveRightValue: new Animated.Value(360),
@@ -36,7 +36,7 @@ class EnterMobileNumber extends React.Component {
       buttonEndValue: -5,
       isLoading: false,
       endMoveValue: 300,
-      duration: 2000,
+      duration: 2500,
       isVisible: false,
       isSuccess: 0,
       isPasswordVisible: false,
@@ -54,6 +54,11 @@ class EnterMobileNumber extends React.Component {
 
     componentDidMount = async () => {
         const { navigation } = this.props;
+        Animated.timing(this.state.startValue, {
+          toValue: -SCREEN_WIDTH / 2,
+          duration: 2000,
+          useNativeDriver: false,
+        }).start();
         // this.animation.play();
         // Or set a specific startFrame and endFrame with:
         setTimeout(() => {

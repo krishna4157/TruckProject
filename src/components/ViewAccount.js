@@ -9,6 +9,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import base64 from 'react-native-base64'
 import CardView from './CardView';
 import { BlurView } from 'expo-blur';
+import { StatusBar } from 'react-native';
 
 const {width:SCREEN_WIDTH, height: SCREEN_HEIGHT} = Dimensions.get('window')
 
@@ -57,6 +58,7 @@ class ViewAccount extends React.Component {
         const {uri,openView} = this.state;
         return (
             <View style={{ flex: 1, flexDirection: 'column', backgroundColor: 'transparent', height: '100%',width:'100%', justifyContent: 'flex-start', alignContent: 'flex-start', alignSelf: 'flex-start', alignItems: 'flex-start' }}>
+                 <StatusBar />
                  <NavigationEvents onDidFocus={()=>{this.update()}} />
                  {openView && 
                  <BlurView style={{height:SCREEN_HEIGHT,width:SCREEN_WIDTH,position:'absolute',backgroundColor:'transparent',zIndex:10}} intensity={300} >

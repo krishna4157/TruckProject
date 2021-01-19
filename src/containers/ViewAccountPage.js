@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 // import { setupInitialHealthKit, getWeight } from '../utils/healthKit/Healthkit';
 import { View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { retrieveLogin } from '../actions/login';
@@ -43,9 +44,13 @@ class ViewAccountScreeen extends Component {
         const { deviceToken } = this.state;
         // const text = navigation.getParam("BackendData");
         return (
+            
             <View style={{flex:1}}>
             {/* <HeaderComponent navigation={navigation} />  */}
+            
+
            <ViewAccount navigation={navigation} />
+           
            </View>
         );
     }
