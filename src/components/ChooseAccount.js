@@ -20,7 +20,7 @@ class ChooseAccount extends React.Component {
         this.setState({
             pin: value
         });
-        alert(this.state.pin);
+        // alert(this.state.pin);
     }
 
 

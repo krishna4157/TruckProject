@@ -110,7 +110,7 @@ update = async () => {
         return (
           <TouchableOpacity onPress={()=>{
                 this.props.navigation.navigate('ViewAccount');
-             }} style={{position:'absolute',marginTop:0,zIndex:10,padding:10}}>
+             }} style={{position:'absolute',marginTop:60,zIndex:10,padding:10}}>
                <NavigationEvents onDidFocus={()=>{this.update()}} />
             <Image source={image} style={{borderWidth:5,borderColor:'#00b9e7',borderRadius:60,maxHeight:90,maxWidth:90,height:100,width:100}} />
           </TouchableOpacity>

@@ -1,4 +1,7 @@
+import { View } from "native-base";
 import React, { Component } from "react";
+import { BackHandler } from "react-native";
+import { NavigationEvents } from "react-navigation";
 import { connect } from "react-redux";
 import ChooseAccount from "../components/ChooseAccount";
 import ChristmasScreen from "../components/ChristmasScreen";
@@ -11,12 +14,39 @@ class MapViewPage extends Component {
         deviceToken: '',
     };
 
+    onFocus =() => {
+        const {navigation} = this.props;
+        // alert(JSON.stringify(navigation));
+        // console.log(navigation);
+        this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.onBackButtonPressed);
+    }
+    
+    onBlur =() => {
+        // alert("on bluer");
+        // BackHandler.removeEventListener('hardwareBackPress',() => this.onBackButtonPressed());
+        this.backHandler.remove();
+    }
+
+    onBackButtonNotPressed = () => {
+        alert('hello');
+    }
+    
+    onBackButtonPressed =() => {
+        const {navigation} = this.props;
+        // const { routeName } = navigation.state.routes[navigation.state.index];
+        // alert(JSON.stringify(routeName));
+        return true;
+    }
+
 
     render() {
         const  { navigation, screenProps} = this.props;
         return (
+            <View style={{flex:1}}>
+            <NavigationEvents onDidFocus={this.onFocus} on onDidBlur={this.onBlur} />
             <MapViewScreen screenProps={screenProps} navigation={navigation}
             />
+            </View>
         );
     }
 }

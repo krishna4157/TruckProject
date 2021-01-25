@@ -184,7 +184,7 @@ class NewScreen extends React.Component {
  
 
   onSubmit = (values) => {
-    alert(JSON.stringify(values));
+    // alert(JSON.stringify(values));
   }
 
   onClick = () => {
@@ -217,7 +217,7 @@ hideTheActionSheet = () => {
 }
 
   gestureHandler = (e) => {
-    alert('helo');
+    // alert('helo');
     if(e.nativeEvent.contentOffset.y > 0 ) this.bringUpActionSheet();
     else hideTheActionSheet();
 }

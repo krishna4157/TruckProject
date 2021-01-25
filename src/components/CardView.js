@@ -189,7 +189,7 @@ class CardView extends React.Component {
  
 
   onSubmit = (values) => {
-    alert(JSON.stringify(values));
+    // alert(JSON.stringify(values));
   }
 
   onClick = () => {
@@ -224,7 +224,6 @@ const {hideOpenView} = this.props;
 }
 
   gestureHandler = (e) => {
-    alert('helo');
     if(e.nativeEvent.contentOffset.y > 0 ) this.bringUpActionSheet();
     else hideTheActionSheet();
 }

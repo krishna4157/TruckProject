@@ -4,7 +4,7 @@ import santa from '../assets/images/santa.gif';
 import tree from '../assets/images/tree.gif';
 import { FadeInView } from '../utils/FadeInView';
 import logo from '../assets/images/driveFront.gif';
-import road from '../assets/images/road.png';
+import road from '../assets/images/road2.png';
 import { Dimensions } from 'react-native';
 import { Button } from 'native-base';
 import { MaterialIcons, Entypo, AntDesign, MaterialCommunityIcons, Ionicons, FontAwesome } from '@expo/vector-icons';
@@ -32,7 +32,7 @@ class EnterMobileNumber extends React.Component {
       ButtonStartValue: new Animated.Value(-180),
       moveLeftValue: new Animated.Value(0),
       moveRightValue: new Animated.Value(360),
-      endValue: SCREEN_WIDTH+60,
+      endValue: SCREEN_WIDTH+SCREEN_WIDTH/2,
       buttonEndValue: -5,
       isLoading: false,
       endMoveValue: 300,
@@ -48,7 +48,7 @@ class EnterMobileNumber extends React.Component {
         this.setState({
             pin: value
         });
-        alert(this.state.pin);
+        // alert(this.state.pin);
     }
 
 
@@ -164,7 +164,7 @@ class EnterMobileNumber extends React.Component {
   </Animated.View>
   <Image
     source={road}
-    style={{alignSelf:'center',overflow:'hidden',marginTop:-30,zIndex:-10}}
+    style={{alignSelf:'center',overflow:'hidden',marginTop:-SCREEN_HEIGHT/2.5 ,zIndex:-10}}
   />
                </FadeInView>
                <View style={{flex:1,alignSelf:'flex-end',alignItems:'flex-end',alignContent:'flex-end',flexDirection:'row'}}>

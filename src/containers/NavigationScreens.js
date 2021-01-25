@@ -1,5 +1,5 @@
 // import { createMaterialBottomTabNavigator as createBottomTabNavigator  } from '@react-navigation/material-bottom-tabs';
-import { Entypo, Feather, Foundation, MaterialCommunityIcons, MaterialIcons,Ionicons } from '@expo/vector-icons';
+import { Entypo, Feather, Foundation, MaterialCommunityIcons, MaterialIcons,Ionicons,FontAwesome } from '@expo/vector-icons';
 import { createBrowserApp } from '@react-navigation/web';
 import React from 'react';
 import { Platform } from "react-native";
@@ -24,10 +24,22 @@ import PinScreen from './PinPage';
 import SendNotificationPage from './SendNotificationPage';
 import ViewAccountPage from './ViewAccountPage';
 import ViewImagePage from './ViewImagePage';
-import { createDrawerNavigator } from 'react-navigation-drawer';
+import { createDrawerNavigator, DrawerItems } from 'react-navigation-drawer';
 import CameraViewPage from './CameraViewPage';
 import ForgotPasswordPage from './ForgotPasswordPage';
-import AaboutPage from './AaboutPage';
+import AboutPage from './AboutPage';
+import CovidPage from './CovidPage';
+import YourRidesPage from './YourRidesPage';
+import DriveBookingsPage from './DriveBookingsPage';
+import PaymentsPage from './PaymentsPage';
+import OlaMoneyPage from './OlaMoneyPage';
+import ReferAndEarnPage from './ReferAndEarnPage';
+import SupportPage from './SupportPage';
+import { Image, Text, View } from 'native-base';
+import UserImage1 from '../assets/images/seatBelt.png';
+import ImageHeader from '../components/Header';
+import { SafeAreaView } from 'react-native';
+import { ScrollView } from 'react-native';
 
 
 
@@ -57,7 +69,7 @@ const UserAccountStack = createStackNavigator({
             
         //   })
     },
-    AboutPage : AaboutPage,
+    AboutScreen : AboutPage,
     EditProfile : EditProfilePage
     // ChangeLanguage: ChangeLanguage,
     // ChangeTimeZone: ChangeTimeZone,
@@ -67,10 +79,9 @@ const UserAccountStack = createStackNavigator({
     // UserValidation,
     // ResetPassword,
     // OtpVerification,
-},
-    { 
-        initialRouteName: 'ViewAccount',  
-        headerMode: 'none',
+},{ 
+    initialRouteName: 'ViewAccount',  
+    headerMode: 'none',
 });
 
 
@@ -122,51 +133,160 @@ const MapViewPageStack = createStackNavigator(
     {  
         defaultNavigationOptions: ({ navigation }) => {  
             return {  
-                headerLeft: (  
-                    <Ionicons  
-                        style={{ paddingLeft: 10 }}  
-                        onPress={() => navigation.openDrawer()}  
-                        name="md-menu"  
-                        size={30}  
-                    />  
-                ),
-                headerShown: navigation.state.routeName=="MapView" ? true : false,
+                // headerLeft: (  
+                //     <Ionicons  
+                //         style={{ paddingLeft: 10 }}  
+                //         onPress={() => navigation.openDrawer()}  
+                //         name="md-menu"  
+                //         size={30}  
+                //     />  
+                // ),
+                // headerShown: navigation.state.routeName=="MapView" ? true : false,
+                headerShown: false,
+
                 headerTitle : null 
             };  
         }  
     }  
 );  
 
-const AppDrawerNavigator = createDrawerNavigator({  
+const AppDrawerNavigator = createDrawerNavigator({
+
+    
     MapView: {  
-        screen: MapViewPageStack,
+        screen: MapViewPageStack, 
+        navigationOptions: {
+            headerTitle:'',
+            title: '',
+            drawerLabel : null,
+
+            // drawerLabel: (<Text style={{color:'white',fontSize:30,paddingLeft:10}}>Hi Krishna!</Text>),
+          },
+    },  
+    CovidPage: {  
+        screen: CovidPage,
         navigationOptions: {
             drawerIcon: (
-                <Ionicons   
-                name="md-menu"  
-                size={30}  
+                <MaterialCommunityIcons   
+                name="security"  
+                size={25}  
             /> 
             ),
+            title : "COVID-19"
           },
 
-    },  
-    SendNotificationScreen : {  
-        screen : SendNotificationPage,
+    },
+    YourRidesPage: {  
+        screen: YourRidesPage,
         navigationOptions: {
             drawerIcon: (
-                <Ionicons  
-                name="md-menu"  
-                size={30}  
+                <Entypo   
+                name="back-in-time"  
+                size={25}  
             /> 
             ),
-          },  
+            title : "Your Rides"
+          },
+
     },
-    CameraScreen : {
-        screen : CameraViewPage
+    DriveBookingsPage: {  
+        screen: DriveBookingsPage,
+        navigationOptions: {
+            drawerIcon: (
+                <MaterialCommunityIcons   
+                name="book-information-variant"  
+                size={25}  
+            /> 
+            ),
+            title : "Drive Bookings"
+          },
+
     },
-    forgotPassword : {
-        screen : ForgotPasswordPage,
-    } 
+    PaymentsPage: {  
+        screen: PaymentsPage,
+        navigationOptions: {
+            drawerIcon: (
+                <MaterialIcons   
+                name="payments"  
+                size={25}  
+            /> 
+            ),
+            title : "Payments"
+          },
+
+    },
+    OlaMoneyPage: {  
+        screen: OlaMoneyPage,
+        navigationOptions: {
+            drawerIcon: (
+                <FontAwesome   
+                name="money"  
+                size={22}  
+            /> 
+            ),
+            title : "Ola Money"
+          },
+
+    },
+    ReferAndEarnPage: {  
+        screen: ReferAndEarnPage,
+        navigationOptions: {
+            drawerIcon: (
+                <MaterialCommunityIcons   
+                name="gift"  
+                size={22}  
+            /> 
+            ),
+            title : "Refer & Earn"
+          },
+
+    },
+    SupportPage: {  
+        screen: SupportPage,
+        navigationOptions: {
+            drawerIcon: (
+                <MaterialIcons   
+                name="support"  
+                size={22}  
+            /> 
+            ),
+            title : "Support"
+          },
+
+    },
+    AboutPage: {  
+        screen: AboutPage,
+        navigationOptions: {
+            drawerIcon: (
+                <MaterialIcons   
+                name="info"  
+                size={22}  
+            /> 
+            ),
+            title : "About"
+          },
+
+    }, 
+},{
+    // contentOptions: ((navigation)=>
+    //     <ImageHeader navigation={navigation}/>
+    // )
+    contentComponent: (props) => {
+        // console.log("-----------------------");
+        // console.log(props.navigation);
+
+        return (
+        <SafeAreaView>
+            <View style={{height: 100,alignItems: 'center', justifyContent: 'center',width:'50%',flexDirection:'column'}}>
+            <ImageHeader navigation={props.navigation}/>
+            <View style={{marginTop:150}}>
+            <Text style={{color:'white',fontSize:30,paddingLeft:10,textAlign:'left'}}>Hi Krishna!</Text>
+            </View>
+            </View>
+          <ScrollView>
+            <DrawerItems {...props} />
+          </ScrollView>
+        </SafeAreaView>)}
 });  
 
 // const AppSwitchNavigator = createSwitchNavigator({  

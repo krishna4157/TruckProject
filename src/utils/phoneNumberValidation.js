@@ -8,8 +8,6 @@ export const validatePhoneNumber = (value) => {
     if(phoneNumber==undefined){
       return false;
     }
-
-    // alert(`${JSON.stringify(phoneNumber.isValid())}    ${value}`);
     else if(_.isEmpty(value)){
       return true
     }

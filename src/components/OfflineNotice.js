@@ -2,6 +2,7 @@
 import React, { PureComponent } from 'react';
 import { View, Text, Dimensions, StyleSheet } from 'react-native';
 import { toHumanSize } from 'i18n-js';
+import { StatusBar } from 'react-native';
 const { width } = Dimensions.get('window');
 function MiniOfflineSign({isConnected,isInternetReachable,t}) {
   // alert("MinOflineSign Connected : "+isConnected);
@@ -11,7 +12,6 @@ function MiniOfflineSign({isConnected,isInternetReachable,t}) {
     <View style={{backgroundColor: isConnected ==true && isInternetReachable ==true ?'#66bb6a':'#ef5350',
     // height: 30,
     padding:5,
-    marginTop:30,
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
@@ -19,6 +19,7 @@ function MiniOfflineSign({isConnected,isInternetReachable,t}) {
     // position: 'absolute',
     // top: 30
     }}>
+      <StatusBar />
       <Text style={styles.offlineText}>{isConnected==true && isInternetReachable == true ? t("Online") : t("Offline")}</Text>
     </View>
   );

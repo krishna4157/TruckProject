@@ -14,10 +14,10 @@ export default class KeyboardShift extends Component {
     this.keyboardDidHideSub = Keyboard.addListener('keyboardDidHide', this.handleKeyboardDidHide);
   }
 
-  componentWillUnmount() {
-    this.keyboardDidShowSub.remove();
-    this.keyboardDidHideSub.remove();
-  }
+  // componentWillUnmount() {
+  //   this.keyboardDidShowSub.remove();
+  //   this.keyboardDidHideSub.remove();
+  // }
 
   render() {
     const { children: renderProp } = this.props;

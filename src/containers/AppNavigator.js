@@ -20,23 +20,28 @@ import { Text } from "react-native";
 import logo from '../assets/images/gps.gif';
 import { Image } from "react-native";
 import { Dimensions } from "react-native";
+import { BackHandler } from 'react-native';
+
 const {width:SCREEN_WIDTH, height: SCREEN_HEIGHT} = Dimensions.get('window');
 
 class AppNavigation extends Component {
-
-  state={
-    disappear:false,
-    isInternetReachable:true,
-    connectionStatus: '',
-    visible: false,
-    errorMessage: '',
-    isLocationAvailable: true
-    // Status:'',
-    // loading: true,
-    // isConnected: false,
-    // locale: 'en-US',
-    // isReady: false,
+  constructor(props) {
+    super(props)
+    this.state={
+      disappear:false,
+      isInternetReachable:true,
+      connectionStatus: '',
+      visible: false,
+      errorMessage: '',
+      isLocationAvailable: true
+      // Status:'',
+      // loading: true,
+      // isConnected: false,
+      // locale: 'en-US',
+      // isReady: false,
+    }
   }
+  
 
 //   componentWillUnmount() {
 //     NetInfo.isConnected.removeEventListener('connectionChange', this.handleConnectivityChange);
@@ -173,6 +178,7 @@ getLocationAsync = async () => {
     this.setState({ isLocationAvailable: false });
   }
 }
+    
   
   render() {
     const { screenProps ,isConnected,appStatus,unreadChats} = this.props;
@@ -185,6 +191,8 @@ getLocationAsync = async () => {
     return (
       <View style={{flex:1}}>
       {disappear ==false && Platform.OS!='web' && <OfflineNotice setDissapearStatus={this.setDissapearStatus} stopToaster={this.stopToaster} t={screenProps.t} isInternetReachable={isInternetReachable} isConnected={isConnected} />}
+      
+    
       <NavigationScreens
         screenProps={screenProps}
       />

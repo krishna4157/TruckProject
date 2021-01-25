@@ -103,9 +103,15 @@ class ViewAccount extends React.Component {
                 <MaterialCommunityIcons name={'onepassword'} style={{ alignSelf: 'center', fontSize: 25 }} />
                     <Text style={{ textAlign: 'center', padding: 20, fontSize: 25 }}>Change PIN</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={{flexDirection:'row',paddingLeft:10,borderBottomWidth:1,borderColor:'grey',width:'100%',alignItems:'flex-start'}}>
+                <TouchableOpacity onPress={()=>{
+                    navigation.navigate('AboutScreen');
+                }} style={{flexDirection:'row',paddingLeft:10,borderBottomWidth:1,borderColor:'grey',width:'100%',alignItems:'flex-start'}}>
                 <MaterialCommunityIcons name={'information-outline'} style={{ alignSelf: 'center', fontSize: 25 }} />
                     <Text style={{ textAlign: 'center', padding: 20, fontSize: 25 }}>About</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={{flexDirection:'row',paddingLeft:10,borderBottomWidth:1,borderColor:'grey',width:'100%',alignItems:'flex-start'}}>
+                <MaterialCommunityIcons name={'information-outline'} style={{ alignSelf: 'center', fontSize: 25 }} />
+                    <Text style={{ textAlign: 'center', padding: 20, fontSize: 25 }}>Log out</Text>
                 </TouchableOpacity>
                 </ScrollView>
                 <CardView navigation={navigation} hideOpenView={this.hideOpenView} openView={this.state.openView} />

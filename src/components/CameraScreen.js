@@ -9,6 +9,9 @@ import AsyncStorage from '@react-native-community/async-storage';
 import ImgToBase64 from 'react-native-image-base64';
 import base64 from 'react-native-base64'
 import { NavigationEvents } from 'react-navigation';
+import logo from '../assets/images/lorry.png';
+import { Dimensions } from 'react-native';
+const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window')
 
 
 let camera = Camera;
@@ -210,28 +213,14 @@ let imagePath = null;
           }}
         >
            <NavigationEvents onDidFocus={()=>{__startCamera()}} />
-          <TouchableOpacity
-            onPress={__startCamera}
-            style={{
-              width: 130,
-              // borderRadius: 4,
-              backgroundColor: '#14274e',
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-              height: 40
-            }}
-          >
-            <Text
-              style={{
-                color: '#fff',
-                fontWeight: 'bold',
-                textAlign: 'center'
-              }}
-            >
-              Take picture
-            </Text>
-          </TouchableOpacity>
+           <View>
+           <Image
+
+    source={logo}
+    style={{alignSelf:'center',resizeMode:'contain',width:SCREEN_WIDTH/1.2}}
+          
+  />
+  </View>
         </View>
       )}
 

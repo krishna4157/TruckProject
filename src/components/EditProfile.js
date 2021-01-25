@@ -228,7 +228,7 @@ class EditProfileScreen extends React.Component {
   //   }
 
   onSubmit = (values) => {
-    alert(JSON.stringify(values));
+    // alert(JSON.stringify(values));
   }
 
   StartBackgroundColorAnimation = () =>

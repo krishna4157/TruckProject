@@ -109,6 +109,7 @@ class Pin extends React.Component {
                                         error: ''
                                     });
                                     keyInput1.current.focus();
+
                                 }, 2000);
                             }
                         } else {
@@ -125,7 +126,14 @@ class Pin extends React.Component {
                             }, 2000);
 
                         }
+                        keyInput1.current.clear();
+                        keyInput2.current.clear();
+                        keyInput3.current.clear();
+                        keyInput4.current.clear();
+                        keyInput5.current.clear();
+                        keyInput6.current.clear();
                         setSubmitting(false);
+
                     }, 500);
                 }}>
                 {props => {
@@ -150,26 +158,70 @@ class Pin extends React.Component {
                                         props.setFieldValue('input5', '');
                                         props.setFieldValue('input6', '');
                                         keyInput1.current.focus();
+                                        keyInput1.current.clear();
+                                        keyInput2.current.clear();
+                                        keyInput3.current.clear();
+                                        keyInput4.current.clear();
+                                        keyInput5.current.clear();
+                                        keyInput6.current.clear();
+
                                     }}>
                                         </TouchableOpacity>
                                         <TextInput
-                                        // keyboardType={'numeric'}
-                                            onKeyPress={({ nativeEvent }) => {
+                                        keyboardType={'numeric'}
+                                            // onKeyPress={({ nativeEvent }) => {
+                                            //     this.setState({
+                                            //         error: ''
+                                            //     })
+                                            //     console.log(nativeEvent);
+                                            //     if (nativeEvent.key === 'Backspace') {
+                                            //         keyInput1.current.focus();
+                                            //         props.setFieldValue('input1', '');
+                                            //     } else {
+                                            //         props.setFieldValue('input1', nativeEvent.key);
+                                            //         keyInput2.current.focus();
+                                            //     }
+                                            // }}
+
+                                            // onChangeText={(value)=>{
+                                            //     console.log(nativeEvent)
+                                            //     props.setFieldValue('input1', value);
+                                            //     keyInput2.current.focus();
+
+                                            // }
+                                            // }
+                                            clearTextOnFocus={true}
+                                            onFocus={()=>{
+                                                // console.log('hell'+props.getFieldProps('input1').value.text);
+                                               if(props.getFieldProps('input1').value.text!=undefined){
+                                                keyInput1.current.focus();
+                                                keyInput1.current.clear();
+                                                props.setFieldValue('input1', '');
+                                               }
+                                            }}
+                                            onChange={({ nativeEvent }) => {
+                                                console.log('no hell');
                                                 this.setState({
                                                     error: ''
                                                 })
-                                                if (nativeEvent.key === 'Backspace') {
+                                                if (nativeEvent.text === "") {
                                                     keyInput1.current.focus();
                                                     props.setFieldValue('input1', '');
+                                                } else if (nativeEvent.text==""){
+                                                    keyInput1.current.focus();
+                                                    props.setFieldValue('input1', '');
+                                                    
                                                 } else {
-                                                    props.setFieldValue('input1', nativeEvent.key);
+                                                    props.setFieldValue('input1', nativeEvent.text);
                                                     keyInput2.current.focus();
                                                 }
                                             }}
+                                            // value={props.handleChange}
                                             autoFocus={true}
                                             secureTextEntry={true}
                                             style={{ position:'absolute',zIndex:-1,fontSize: 0, height: 50, textDecorationColor: wrongPinColor, backgroundColor: props.values.input1 != '' && error == '' ? fillColor : error != '' ? wrongPinColor : 'transparent', borderRadius: round ? 50 : 5, width: 50, textAlign: 'center', alignSelf: 'center', alignItems: 'center', textAlignVertical: 'center' }} blurOnSubmit={false}
                                             ref={keyInput1}
+                                            // value={keyInput1}
                                             maxLength={1}
 
                                         />
@@ -187,20 +239,36 @@ class Pin extends React.Component {
                                         props.setFieldValue('input5', '');
                                         props.setFieldValue('input6', '');
                                         keyInput2.current.focus();
+                                        keyInput2.current.clear();
+                                        keyInput3.current.clear();
+                                        keyInput4.current.clear();
+                                        keyInput5.current.clear();
+                                        keyInput6.current.clear();
 
                                     }}>
                                         </TouchableOpacity>
                                         <TextInput
+                                        keyboardType={'numeric'}
+
+onFocus={()=>{
+    // console.log('hell'+props.getFieldProps('input1').value.text);
+   if(props.getFieldProps('input2').value.text!=undefined){
+    keyInput1.current.focus();
+    keyInput1.current.clear();
+    props.setFieldValue('input2', '');
+   }
+}}
                                             
-                                            onKeyPress={({ nativeEvent }) => {
+                                            onChange={({ nativeEvent }) => {
+                                                console.log(nativeEvent);
                                                 this.setState({
                                                     error: ''
                                                 })
-                                                if (nativeEvent.key === 'Backspace') {
+                                                if (nativeEvent.text === "") {
                                                     keyInput1.current.focus();
                                                     props.setFieldValue('input2', '');
                                                 } else {
-                                                    props.setFieldValue('input2', nativeEvent.key);
+                                                    props.setFieldValue('input2', nativeEvent.text);
                                                     keyInput3.current.focus();
                                                 }
                                             }}
@@ -224,19 +292,36 @@ class Pin extends React.Component {
                                         props.setFieldValue('input5', '');
                                         props.setFieldValue('input6', '');
                                         keyInput3.current.focus();
+                                        keyInput3.current.clear();
+                                        keyInput4.current.clear();
+                                        keyInput5.current.clear();
+                                        keyInput6.current.clear();
 
                                     }}>
                                         </TouchableOpacity>
                                         <TextInput
-                                            onKeyPress={({ nativeEvent }) => {
+
+keyboardType={'numeric'}
+
+onFocus={()=>{
+    console.log('hell'+props.getFieldProps('input1').value.text);
+   if(props.getFieldProps('input3').value.text!=undefined){
+    keyInput1.current.focus();
+    keyInput1.current.clear();
+    props.setFieldValue('input3', '');
+   }
+}}
+                                            
+                                            onChange={({ nativeEvent }) => {
+                                                console.log(nativeEvent);
                                                 this.setState({
                                                     error: ''
                                                 })
-                                                if (nativeEvent.key === 'Backspace') {
+                                                if (nativeEvent.text === "") {
                                                     keyInput2.current.focus();
                                                     props.setFieldValue('input3', '');
                                                 } else {
-                                                    props.setFieldValue('input3', nativeEvent.key);
+                                                    props.setFieldValue('input3', nativeEvent.text);
                                                     keyInput4.current.focus();
                                                 }
                                             }}
@@ -258,27 +343,47 @@ class Pin extends React.Component {
                                         props.setFieldValue('input4', '');
                                         props.setFieldValue('input5', '');
                                         props.setFieldValue('input6', '');
+                                        
                                         if(noOfInput > 5){
                                         keyInput5.current.focus();
-                                        } else {
+                                        keyInput5.current.clear();
+                                        keyInput6.current.clear();
+                                        
+                                    } else {
                                             keyInput4.current.focus();
+                                            keyInput4.current.clear();
+                                           
                                         }
                                     }}>
                                         </TouchableOpacity>
                                         <TextInput
-                                            onKeyPress={({ nativeEvent }) => {
+                                                                                keyboardType={'numeric'}
+
+                                                                                onFocus={()=>{
+                                                                                    // console.log('hell'+props.getFieldProps('input1').value.text);
+                                                                                   if(props.getFieldProps('input4').value.text!=undefined){
+                                                                                    keyInput1.current.focus();
+                                                                                    keyInput1.current.clear();
+                                                                                    props.setFieldValue('input4', '');
+                                                                                   }
+                                                                                }}
+                                                                                                                            
+                                            onChange={({ nativeEvent }) => {
                                                 this.setState({
                                                     error: ''
                                                 })
-                                                if (nativeEvent.key === 'Backspace') {
+                                                if (nativeEvent.text === "") {
                                                     keyInput3.current.focus();
                                                     props.setFieldValue('input4', '');
                                                 } else {
-                                                    props.setFieldValue('input4', nativeEvent.key);
+                                                    props.setFieldValue('input4', nativeEvent.text);
                                                     if(noOfInput > 5){
                                                         keyInput5.current.focus();
+                                                        keyInput5.current.clear();
+                                                        keyInput6.current.clear();
                                                         } else {
                                                             keyInput4.current.focus();
+                                                            keyInput4.current.clear();
                                                         }
                                                 }
                                             }}
@@ -300,19 +405,33 @@ class Pin extends React.Component {
                                         props.setFieldValue('input5', '');
                                         props.setFieldValue('input6', '');
                                         keyInput5.current.focus();
+                                        keyInput5.current.clear();
+                                        keyInput6.current.clear();
 
                                     }}>
                                         </TouchableOpacity>
                                         <TextInput
-                                            onKeyPress={({ nativeEvent }) => {
+
+keyboardType={'numeric'}
+
+onFocus={()=>{
+    console.log('hell'+props.getFieldProps('input5').value.text);
+   if(props.getFieldProps('input5').value.text!=undefined){
+    keyInput5.current.clear();
+    keyInput4.current.focus();
+    props.setFieldValue('input5', '');
+   }
+}}
+                                            
+                                            onChange={({ nativeEvent }) => {
                                                 this.setState({
                                                     error: ''
                                                 })
-                                                if (nativeEvent.key === 'Backspace') {
+                                                if (nativeEvent.text === "") {
                                                     keyInput4.current.focus();
                                                     props.setFieldValue('input5', '');
                                                 } else {
-                                                    props.setFieldValue('input5', nativeEvent.key);
+                                                    props.setFieldValue('input5', nativeEvent.text);
                                                     keyInput6.current.focus();
                                                 }
                                             }}
@@ -333,19 +452,33 @@ class Pin extends React.Component {
                                         })
                                         props.setFieldValue('input6', '');
                                         keyInput6.current.focus();
+                                        keyInput6.current.clear();
 
                                     }}>
                                         </TouchableOpacity>
                                         <TextInput
-                                            onKeyPress={({ nativeEvent }) => {
+
+keyboardType={'numeric'}
+
+onFocus={()=>{
+    console.log('hell'+props.getFieldProps('input5').value.text);
+   if(props.getFieldProps('input6').value.text!=undefined){
+    keyInput6.current.clear();
+    keyInput5.current.focus();
+    props.setFieldValue('input6', '');
+   }
+}}
+                                            
+                                            onChange={({ nativeEvent }) => {
+                                                console.log(nativeEvent);
                                                 this.setState({
                                                     error: ''  
                                                 })
-                                                if (nativeEvent.key === 'Backspace') {
+                                                if (nativeEvent.text === "") {
                                                     keyInput5.current.focus();
                                                     props.setFieldValue('input6', '');
                                                 } else {
-                                                    props.setFieldValue('input6', nativeEvent.key);
+                                                    props.setFieldValue('input6', nativeEvent.text);
                                                     keyInput6.current.focus();
                                                 }
                                             }}
